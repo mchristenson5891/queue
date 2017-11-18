@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var findOrCreate = require('mongoose-find-or-create')
 
 var answerSchema = new mongoose.Schema({
   choice: mongoose.Schema.Types.ObjectId,
@@ -17,5 +18,7 @@ var userSchema = new mongoose.Schema({
 }, {
   timestamps: true
 });
+
+userSchema.plugin(findOrCreate);
 
 module.exports = mongoose.model('User', userSchema);
