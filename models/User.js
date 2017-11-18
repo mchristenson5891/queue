@@ -1,16 +1,19 @@
 var mongoose = require('mongoose');
-var answerSchema = require('./Answer');
-var quizSchema = require('./Quiz')
+
+var answerSchema = new mongoose.Schema({
+  choice: mongoose.Schema.Types.ObjectId,
+  result: Boolean,
+  questionId: [{ type: mongoose.Schema.Types.ObjectId,
+                ref: 'Question' }]
+});
 
 var userSchema = new mongoose.Schema({
-  first_name: String,
-  last_name: String,
-  cohort: Number,
-  instructor: Boolean,
+  fullName: String,
+  cohort: String,
+  instructor: {type: Boolean, default: false},
   githubId: String,
-  percent_correct: Number,
   answers: [answerSchema],
-  quizzes: [quizSchema]
+  quizzes: [{type: mongoose.Schema.Types.ObjectId, ref: 'Quiz'}]
 }, {
   timestamps: true
 });
