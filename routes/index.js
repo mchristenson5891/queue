@@ -12,11 +12,10 @@ router.get('/auth/github/',
 
 
 router.get('/auth/github/callback',
-passport.authenticate('github', { failureRedirect: '/nogood' }),
-function(req, res) {
-  res.redirect('/');
-});
-
+  passport.authenticate('github', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+  });
 
 
 module.exports = router;
