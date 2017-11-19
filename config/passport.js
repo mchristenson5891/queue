@@ -1,15 +1,14 @@
-
 var passport = require('passport');
 var GitHubStrategy = require('passport-github').Strategy;
 var User = require('../models/User')
 
 passport.use(new GitHubStrategy({
-    clientID:  process.env.GITHUB_CLIENT_ID,
+    clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/github/callback"
+    callbackURL: process.env.GITHUB_CALLBACK
   },
   function(accessToken, refreshToken, profile, cb) {
-    User.findOne({ 'googleId': profile.id }, function(err, student) {
+    User.findOne({ 'githubId': profile.id }, function(err, student) {
       if (err) return cb(err);
       if (student) {
         return cb(null, student);

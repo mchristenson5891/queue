@@ -10,13 +10,13 @@ var passport = require('passport');
 // load the env vars
 require('dotenv').config();
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-
 var app = express();
 
 require('./config/database');
 require('./config/passport');
+
+var index = require('./routes/index');
+var users = require('./routes/users');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
