@@ -9,6 +9,21 @@
   <link rel="stylesheet" href="stylesheets/style.css"/>
 </head>
 <body>
-  <a href="/auth/github">Login with GitHub</a>
+  <nav>
+      <nav>
+          <div class="nav-wrapper">
+            <a href="#!" class="brand-logo center">Logo</a>
+            <ul class="left hide-on-med-and-down">
+              <$ if (user) { $>
+                <li><a href="sass.html">Home</a></li>
+                <li><a href="/logout">Logout</a></li>
+              <$ } else { $>
+                <li><a href="/auth/github">Login with GitHub</a></li>
+                <$ } $>
+            </ul>
+          </div>
+        </nav>
+  
+  </nav>
 </body>
 </html>

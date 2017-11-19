@@ -1,7 +1,6 @@
 var router = require('express').Router();
 var passport= require('passport');
 
-// The root route renders our only view
 router.get('/', function(req, res) {
   res.render('index', {user: req.user});
 });
@@ -14,6 +13,11 @@ router.get('/auth/github/',
 router.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/login' }),
   function(req, res) {
+    res.redirect('/');
+  });
+
+  router.get('/logout', function(req, res){
+    req.logout();
     res.redirect('/');
   });
 
