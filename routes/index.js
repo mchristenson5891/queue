@@ -30,7 +30,11 @@ function isLoggedIn(req, res, next) {
   res.redirect('/auth/google');
 }
 
-
+router.get('/auth/github/callback',
+  passport.authenticate('github', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+  });
 
 
 module.exports = router;
