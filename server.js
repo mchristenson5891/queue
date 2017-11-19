@@ -10,13 +10,13 @@ var passport = require('passport');
 // load the env vars
 require('dotenv').config();
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-
 var app = express();
 
 require('./config/database');
 require('./config/passport');
+
+var index = require('./routes/index');
+var users = require('./routes/users');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,6 +28,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  secret: "Queue",
+  reave: false,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
