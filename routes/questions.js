@@ -1,5 +1,5 @@
 var express = require('express');
-var router = express.Router();
+var router = express.Router({mergeParams: true});
 var questions = require('./../controllers/questionsController');
 
 router.get('/', questions.index);
