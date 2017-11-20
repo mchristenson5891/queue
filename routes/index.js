@@ -2,6 +2,7 @@ var router = require('express').Router();
 var passport= require('passport');
 var User = require('./../models/User');
 
+
 router.get('/', function(req, res) {
   if (req.body.instructor === true) {
     User.find({instructor: true}, (err, teacher) => {
