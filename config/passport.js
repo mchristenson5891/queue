@@ -5,12 +5,11 @@ var User = require('../models/User')
 console.log(process.env.GITHUB_CLIENT_ID)
 
 passport.use(new GitHubStrategy({
-    clientID: process.env.GITHUB_CLIENT_ID,
-    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    clientID: "9b8689510f1da6d56dd5",
+    clientSecret: "f2ff34bf2c6353033bb1f4cb3f656bc713db0219",
     callbackURL: "http://localhost:3000/auth/github/callback"
   },
   function(accessToken, refreshToken, profile, cb) {
-    console.log("in")
     console.log(process.env.GITHUB_CLIENT_ID)
     console.log(process.env.GITHUB_CLIENT_SECRET)
     User.findOne({ 'githubId': profile.id }, function(err, student) {
