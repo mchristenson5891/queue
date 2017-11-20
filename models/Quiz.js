@@ -7,7 +7,8 @@ var optionSchema = new mongoose.Schema({
 var questionSchema = new mongoose.Schema({
   question: String,
   correctAnswer: mongoose.Schema.Types.ObjectId,
-  options: [optionsSchema],
+  options: [optionSchema],
+  quizID: mongoose.Schema.Types.ObjectId
 });
 
 var quizSchema = new mongoose.Schema({
