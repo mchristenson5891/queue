@@ -16,10 +16,9 @@ function newQuiz(req, res) {
 
 function create(req, res) {
   var quiz = new Quiz(req.body);
-  console.log("in quiz")
-  console.log(quiz)
   // quiz.question.push(req.body.question);
   if (quiz.save()) {
+    console.log(quiz)
     res.redirect(`/quizzes/${quiz.id}`);
   } else {
     res.render('./quizzes/new');
