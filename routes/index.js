@@ -4,18 +4,15 @@ var User = require('./../models/User');
 
 
 router.get('/', function(req, res) {
-  if (req.body.instructor === true) {
-    User.find({instructor: true}, (err, teacher) => {
+    User.findById({instructor: true}, (err, teacher) => {
       console.log(teacher)
-      res.render('index', {user: teacher});
+      res.render('index', {user: req.user});
     }) 
-  } else {
     User.find({instructor: false}, (err, student) => {
       console.log(student);
       res.render('index', {user: student})
     })
-  };
-});
+  });
 
 
 router.get('/logout', (req, res) => { req.logout(); res.render('index', {user: null})})
