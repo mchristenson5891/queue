@@ -10,5 +10,14 @@
 </head>
 <body>
   <a href="/auth/github">Login with GitHub</a>
+  <ul class="right">
+    <$ if (user) { $>
+      <li><a href="/logout"><i class="material-icons left">trending_flat</i><$= user.fullName $></a></li>
+    <$ } else { $>
+      <li><a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a></li>
+      <$ } $>
+  </ul>
+
+
 </body>
 </html>
