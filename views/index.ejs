@@ -17,13 +17,16 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <% if (user) { %>
+            <li class="nav-item active">
+                <a class="nav-link disabled"><%=` Welcome, ${user.githubUserName} `%></a>
+              </li>
           <li class="nav-item active">
               <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
             </li>
-          <li class="nav-item">
+          <li class="nav-item active navbar-left">
             <a class="nav-link" href="/logout">Logout</a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown active navbar-left">
               <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
               <div class="dropdown-menu" aria-labelledby="dropdown01">
                 <a class="dropdown-item" href="/">Quizzes</a>
@@ -32,7 +35,7 @@
               </div>
             </li>
           <% } else { %>
-          <li class="nav-item">
+          <li class="nav-item navbar-left">
             <a class="nav-link" href="/auth/github/callback">Login with Github</a>
           </li>
           <% } %>
@@ -47,32 +50,8 @@
       <br>
       <br>
       <div class="container">
-          <form>
-              <div class="form-group groupTwo">
-                <label for="exampleFormControlSelect2">Taken Quizzes</label>
-                <select multiple class="form-control" id="exampleFormControlSelect2">
-                  <option>Here we can display submitted quizzes</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
-              <form>
-              <div class="form-group groupTwo">
-                <label for="exampleFormControlSelect2">Assigned Quizzes</label>
-                <select multiple class="form-control" id="exampleFormControlSelect2">
-                  <option>Here we can display assigned quizzes</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+          <h1>Welcome</h1>
+
       </div>
 <% } else { %>
   <br>
@@ -80,6 +59,7 @@
   <br>
   <br>
   <h1>Login</h1>
+  <h1> <% user %></h1>
   <form>
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
@@ -98,7 +78,7 @@
     </form>
   <% } %>
 </div>
-
+  
     <script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
