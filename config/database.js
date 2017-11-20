@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 mongoose.Promise = Promise;
 
-mongoose.connect('mongodb://localhost/food');
+mongoose.connect('mongodb://localhost/queue');
 
 // database connection event
 mongoose.connection.once('open', function () {
