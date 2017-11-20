@@ -16,13 +16,14 @@ require('./config/database');
 require('./config/passport');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var students = require('./routes/students');
 var quizzes = require('./routes/quizzes');
+var instructors = require('./routes/instructors');
+var questions = require('./routes/questions');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-require('ejs').delimiter = '$';
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -40,8 +41,11 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/students', students);
 app.use('/quizzes', quizzes);
+app.use('/instructors', instructors);
+app.use('/quizzes/:id/questions', questions);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
