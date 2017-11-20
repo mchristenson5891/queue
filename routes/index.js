@@ -3,13 +3,21 @@ var passport= require('passport');
 var User = require('./../models/User');
 
 router.get('/', function(req, res) {
-  User.find({}, (err, teacher) => {
-    console.log(teacher)
-  })
-  res.render('index', {user: teacher1});
+  if (req.body.instructor === true) {
+    User.find({instructor: true}, (err, teacher) => {
+      console.log(teacher)
+      res.render('index', {user: teacher});
+    }) 
+  } else {
+    User.find({instructor: false}, (err, student) => {
+      console.log(student);
+      res.render('index', {user: student})
+    })
+  };
 });
 
-router.get('/logout', (req, res) => { req.logout(); req.session.destroy(); res.redirect('/'); })
+
+router.get('/logout', (req, res) => { req.logout(); res.render('index', {user: null})})
 
 router.get('/auth/github/', passport.authenticate('github'));
 
