@@ -1,7 +1,7 @@
 var Quiz = require('./../models/Quiz');
 
 function index(req, res) {
-  res.render('./quizzes/index');
+  res.render('./quizzes/index', {user: req.body});
 }
 
 function show(req, res) {
