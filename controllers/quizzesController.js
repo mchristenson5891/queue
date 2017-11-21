@@ -1,7 +1,9 @@
 var Quiz = require('./../models/Quiz');
 
 function index(req, res) {
-  res.render('./quizzes/index');
+  Quiz.find({}, (err,quizzes) => {
+    res.render('./quizzes/index', {quizzes:quizzes});
+  });
 }
 
 function show(req, res) {
@@ -21,7 +23,7 @@ function create(req, res) {
     console.log(quiz)
     res.redirect(`/quizzes/${quiz.id}`);
   } else {
-    res.render('./quizzes/new');
+    res.render('./quizzes/new', {quiz:quiz});
   }
 }
 

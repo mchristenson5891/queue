@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
-
+var methodOverride = require('method-override');
 // load the env vars
 require('dotenv').config();
 
@@ -18,13 +18,14 @@ require('./config/passport');
 var index = require('./routes/index');
 var students = require('./routes/students');
 var quizzes = require('./routes/quizzes');
-var instructors = require('./routes/instructors');
-var questions = require('./routes/questions');
+// var instructors = require('./routes/instructors');
+// var questions = require('./routes/questions');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(methodOverride("_method"));
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -43,8 +44,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/students', students);
 app.use('/quizzes', quizzes);
-app.use('/instructors', instructors);
-app.use('/quizzes/:id/questions', questions);
+// app.use('/instructors', instructors);
+// app.use('/quizzes/:id/questions', questions);
 
 
 // catch 404 and forward to error handler

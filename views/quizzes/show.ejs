@@ -1,6 +1,19 @@
-<h1> <%= quiz.name %></h1>
 
+
+<h1> <%= quiz.name %></h1> 
+<!-- <form action="/quizzes/<%= quiz.id %>?_method=PUT" method="POST">
+  <button type="submit" value="<%= quiz.id %>" name="id">Edit</button>
+  
+</form> -->
+<button class="edit">Edit Quiz Name</button>
   <div class="row">
    <a href='/quizzes/<%= quiz.id %>/questions/new'>Make a Question</a>
     
   </div>
+
+  <% quiz.questions.forEach((question) => { %>
+    <a href='/quizzes/questions/<%= question.id %>'><%= question.question %></a>
+    <form action="/quizzes/questions/<%= question.id %>?_method=DELETE" method="POST">
+      <input type="submit" value="Delete">
+    </form>
+<% }) %>
