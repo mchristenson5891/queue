@@ -6,3 +6,11 @@
   
   <input type='submit' value='Add Answer'>
 </form>
+
+<% question.options.forEach((option) => { %>
+  <%= option.option %>
+  <form action="/quizzes/questions/<%= question.id %>/options/?_method=DELETE" method="POST">
+    <input type="submit" value="Delete Answer">
+  </form>
+<% }) %>
+
