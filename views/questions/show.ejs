@@ -1,3 +1,16 @@
-<h1><%= question.options %> </h1>
+<!-- <h1><%= question.options %> </h1> -->
+
+
+<h2>Question:</h2>
+
+<h1><%= question.question %></h1>
+
 
 <a href='/quizzes/questions/<%= question.id %>/options/new'>Create an Answer</a>
+<h2>Answers</h2>
+
+<% question.options.forEach((option) => { %>
+  
+  <li><%= option.option %>&nbsp&nbsp
+  
+<% }) %>
