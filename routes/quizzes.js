@@ -14,7 +14,8 @@ router.delete('/questions/:questionId', questions.deleteQuestion);
 router.get('/questions/:questionId', questions.showQuestion);
 router.get('/questions/:questionId/options/new', questions.newOption);
 router.post('/questions/:questionId/options', questions.createOption);
-router.delete('/questions/:questionId/options/:optionId', questions.deleteOption);
+router.delete('/options/:optionId', questions.deleteOption);
+router.put('/options/:id/set', questions.setAnswer);
 
 
 module.exports = router;

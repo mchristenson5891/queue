@@ -1,24 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
     <h1>Quizzes</h1>
-    
+  
     <% quizzes.forEach((quiz) => { %>
         <a href="/quizzes/<%= quiz.id %>"><%= quiz.name %></a>
-        <form action="/quizzes/<%= quiz.id %>?_method=DELETE" method="POST">
-          <input type="submit" value="Delete">
-        </form>
+        <% if(currentUser.instructor) { %>
+          <form action="/quizzes/<%= quiz.id %>?_method=DELETE" method="POST">
+            <input type="submit" value="Delete">
+          </form>
+        <% } %>
     <% }) %>
     
-    <h1><a href="/quizzes/new">Create Quiz</a></h1>
-    
-  
-</body>
-</html>
+    <% if(!currentUser.instructor) { %>
+      <h1><a href="/quizzes/new">Create Quiz</a></h1>
+    <% } %>
+
 

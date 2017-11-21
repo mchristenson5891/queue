@@ -14,6 +14,7 @@ seed.then(() => {
     return User.create([
         { fullName: 'Jim', instructor: true },
         { fullName: 'Jon', instructor: true },
+        { githubUserName: 'mchristenson5891', instructor: true }
     ])
 })
 
