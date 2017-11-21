@@ -57,10 +57,20 @@ Quiz.findOne({'questions._id': req.params.questionId}, (err, quiz) => {
   var question = quiz.questions.id(req.params.questionId)
   question.options.push(req.body)
   quiz.save((err) => {
-    res.redirect(`/quizzes//questions/${question.id}/options/new/`)
-  })
-})
+    res.redirect(`/quizzes/questions/${question.id}/options/new`)
+    });
+  });
 }
+
+function deleteOption(req, res) {
+  Quiz.findOne({'options._id': req.params.optionId}, (err, quiz) => {
+    quiz.questions.options.remove(req.params.optionId);
+    quiz.save((err) => {
+      res.render(`questions/${question.id}/options/new`, {quiz});
+    });
+  });
+}
+
 
 module.exports = {
   index,
@@ -70,5 +80,6 @@ module.exports = {
   create,
   deleteQuestion,
   newOption,
-  createOption
+  createOption,
+  deleteOption
 }
