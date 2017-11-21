@@ -1,4 +1,4 @@
-<h1><%= question %></h1>
+<h1><%= question.question %></h1>
 
 <form action="/quizzes/questions/<%= question.id %>/options" method="POST">
   <h3>Answer</h3>
@@ -8,9 +8,11 @@
 </form>
 
 <% question.options.forEach((option) => { %>
+  <% if (option) { %>
   <%= option.option %>
-  <form action="/quizzes/questions/<%= question.id %>/options/?_method=DELETE" method="POST">
+  <form action="/quizzes/questions/<%= question.id %>/options/<%= option.id %>\?_method=DELETE" method="POST">
     <input type="submit" value="Delete Answer">
   </form>
+   <% } %>
 <% }) %>
 

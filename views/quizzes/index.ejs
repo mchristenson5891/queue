@@ -6,20 +6,19 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
-<% include ../_partials/headAndNav.ejs %>
 <body>
-  <h1>Quizzes</h1>
+    <h1>Quizzes</h1>
+    
+    <% quizzes.forEach((quiz) => { %>
+        <a href="/quizzes/<%= quiz.id %>"><%= quiz.name %></a>
+        <form action="/quizzes/<%= quiz.id %>?_method=DELETE" method="POST">
+          <input type="submit" value="Delete">
+        </form>
+    <% }) %>
+    
+    <h1><a href="/quizzes/new">Create Quiz</a></h1>
+    
+  
 </body>
-<% include ../_partials/footer.ejs %>
 </html>
 
-<h1>Quizzes</h1>
-
-<% quizzes.forEach((quiz) => { %>
-    <a href="/quizzes/<%= quiz.id %>"><%= quiz.name %></a>
-    <form action="/quizzes/<%= quiz.id %>?_method=DELETE" method="POST">
-      <input type="submit" value="Delete">
-    </form>
-<% }) %>
-
-<a href="/quizzes/new">Create Quiz</a>

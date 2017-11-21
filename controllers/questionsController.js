@@ -24,11 +24,12 @@ function newQuestion(req, res) {
 });
 }
 
-function create(req, res) {
+function createQuestion(req, res) {
   Quiz.findById(req.params.id, (err, quiz) => {
     quiz.questions.push(req.body)
+
     if (quiz.save()) {
-      res.redirect(`/quizzes/${quiz}`)
+      res.redirect(`/quizzes/${quiz._id}`)
     } else {
       res.redirect('/');
     }
@@ -39,7 +40,7 @@ function deleteQuestion(req, res) {
   Quiz.findOne({'questions._id': req.params.questionId}, (err, quiz) => {
     quiz.questions.remove(req.params.questionId);
     quiz.save((err) => {
-      res.render('quizzes/show', {quiz});
+      res.redirect(`/quizzes/${quiz.id}`);
     }); 
   });
 }
@@ -63,10 +64,11 @@ Quiz.findOne({'questions._id': req.params.questionId}, (err, quiz) => {
 }
 
 function deleteOption(req, res) {
-  Quiz.findOne({'options._id': req.params.optionId}, (err, quiz) => {
-    quiz.questions.options.remove(req.params.optionId);
+    Quiz.findOne({'questions._id': req.params.questionId}, (err, quiz) => {
+    var question = quiz.questions.id(req.params.questionId)
+    question.options.remove(req.params.optionId)
     quiz.save((err) => {
-      res.render(`questions/${question.id}/options/new`, {quiz});
+      res.redirect(`/quizzes/questions/${req.params.questionId}/options/new`);
     });
   });
 }
@@ -77,7 +79,7 @@ module.exports = {
   showQuestion,
   newQuestion,
   editQuestion,
-  create,
+  createQuestion,
   deleteQuestion,
   newOption,
   createOption,

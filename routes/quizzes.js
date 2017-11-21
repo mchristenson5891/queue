@@ -9,7 +9,7 @@ router.post('/', quizzes.create);
 router.get('/:id', quizzes.show);
 router.delete('/:id', quizzes.deleteQuiz);
 router.get('/:id/questions/new', questions.newQuestion);
-router.post('/:id/questions', questions.create);
+router.post('/:id/questions', questions.createQuestion);
 router.delete('/questions/:questionId', questions.deleteQuestion);
 router.get('/questions/:questionId', questions.showQuestion);
 router.get('/questions/:questionId/options/new', questions.newOption);

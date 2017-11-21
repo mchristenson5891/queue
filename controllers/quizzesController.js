@@ -2,13 +2,13 @@ var Quiz = require('./../models/Quiz');
 
 function index(req, res) {
   Quiz.find({}, (err,quizzes) => {
-    res.render('./quizzes/index', {quizzes:quizzes});
+    res.render('./quizzes/index', {quizzes});
   });
 }
 
 function show(req, res) {
-  Quiz.findById(req.params.id, (err, doc) => {
-    res.render('./quizzes/show', {quiz: doc})
+  Quiz.findById(req.params.id, (err, quiz) => {
+    res.render('./quizzes/show', {quiz})
 });
 }
 
@@ -23,7 +23,7 @@ function create(req, res) {
     console.log(quiz)
     res.redirect(`/quizzes/${quiz.id}`);
   } else {
-    res.render('./quizzes/new', {quiz:quiz});
+    res.render('./quizzes/new', {quiz});
   }
 }
 
