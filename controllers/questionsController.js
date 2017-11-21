@@ -5,10 +5,12 @@ function index(req, res) {
   res.render('./questions/index');
 }
 
-function show(req, res) {
-  Quiz.findById(req.params.id, (err, doc) => {
-    res.render('./questions/show')
-  })
+function showQuestion(req, res) {
+  console.log(req.params)
+  Quiz.findOne({'questions._id':req.params.questionId}, (err, quiz) => {
+    var question = quiz.questions.id(req.params.questionId)
+    res.render('./questions/show', {question})
+  });
 }
 
 function editQuestion(req, res) {
@@ -17,31 +19,56 @@ function editQuestion(req, res) {
 }
 
 function newQuestion(req, res) {
-  console.log(req.params)
-  Quiz.findById(req.params.id, (err, doc) => {
-  res.render(`./questions/new`, {quiz: doc})
+  Quiz.findById(req.params.id, (err, quiz) => {
+  res.render(`./questions/new`, {quiz: quiz})
 });
 }
 
 function create(req, res) {
-  console.log(req.params.id)
   Quiz.findById(req.params.id, (err, quiz) => {
-    console.log(quiz, req.body)
-    // quiz.questions.push(req.body)
-    //   console.log(quiz)
-    // res.render(`./question/:id`, {quiz: doc})
+    quiz.questions.push(req.body)
+    if (quiz.save()) {
+      res.redirect(`/quizzes/${quiz}`)
+    } else {
+      res.redirect('/');
+    }
   });
 }
 
 function deleteQuestion(req, res) {
+  Quiz.findOne({'questions._id': req.params.questionId}, (err, quiz) => {
+    quiz.questions.remove(req.params.questionId);
+    quiz.save((err) => {
+      res.render('quizzes/show', {quiz});
+    }); 
+  });
+}
 
+function newOption(req, res) {
+  Quiz.findOne({'questions._id': req.params.questionId}, (err, quiz) => {
+    var question = quiz.questions.id(req.params.questionId)
+    res.render('options/new', {question});
+  })
+}
+
+function createOption(req, res) {
+console.log(req.body);
+Quiz.findOne({'questions._id': req.params.questionId}, (err, quiz) => {
+  var question = quiz.questions.id(req.params.questionId)
+  question.options.push(req.body)
+  quiz.save((err) => {
+    res.redirect(`/quizzes//questions/${question.id}/options/new/`)
+  })
+})
 }
 
 module.exports = {
   index,
-  show,
+  showQuestion,
   newQuestion,
   editQuestion,
   create,
-  deleteQuestion
+  deleteQuestion,
+  newOption,
+  createOption
 }

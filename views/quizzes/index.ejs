@@ -12,3 +12,14 @@
 </body>
 <% include ../_partials/footer.ejs %>
 </html>
+
+<h1>Quizzes</h1>
+
+<% quizzes.forEach((quiz) => { %>
+    <a href="/quizzes/<%= quiz.id %>"><%= quiz.name %></a>
+    <form action="/quizzes/<%= quiz.id %>?_method=DELETE" method="POST">
+      <input type="submit" value="Delete">
+    </form>
+<% }) %>
+
+<a href="/quizzes/new">Create Quiz</a>

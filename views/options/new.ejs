@@ -1,0 +1,8 @@
+<h1><%= question %></h1>
+
+<form action="/quizzes/questions/<%= question.id %>/options" method="POST">
+  <h3>Answer</h3>
+  <textarea placeholder='Answer' name='option' required pattern="\w{4,}"></textarea>
+  
+  <input type='submit' value='Add Answer'>
+</form>
