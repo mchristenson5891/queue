@@ -8,11 +8,18 @@
 
 <ol>  
     <% quiz.questions.forEach((question) => { %>
+    <% if(currentUser.instructor) { %>
       <li>&nbsp&nbsp<a href='/quizzes/questions/<%= question.id %>'><%= question.question %></a></li>
-      <form action="/quizzes/questions/<%= question.id %>?_method=DELETE" method="POST">
-        <input type="submit" value="Delete">
-      </form>
+      <% } else { %>
+            <li>&nbsp&nbsp<%= question.question %></li>
+            <% } %>
+             <% if(currentUser.instructor) { %>
+          <form action="/quizzes/<%= quiz.id %>?_method=DELETE" method="POST">
+            <input type="submit" value="Delete">
+          </form>
+        <% } %>
   <% }) %>
+         
 
 </ol>
 </body>

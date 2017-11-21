@@ -1,59 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<% include ./_partials/headAndNav.ejs %>
-
-
-<body>
-    <% if (user) { %>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <div class="container">
-          <h1>Welcome</h1>
-
-      </div>
-<% } else { %>
-  <br>
-  <br>
-  <br>
-  <br>
-  <h1>Login</h1>
-  <h1> <% user %></h1>
-  <form>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-      </div>
-      <div class="form-check">
-      <button type="submit" class="btn btn-primary">Submit</button>
-      <br>
-      <br>
-      <p>Or</p>
-      <a class="btn btn-primary" href="/auth/github/callback">Login with Github</a>
-    </form>
-  
-</div>
-  
-    <script
-    src="https://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-</body>
-</html>
-<html lang="en">
-</body>
-</html>
+        <ul class="right">
+          <% if (currentUser) { %>
+            <li><a href="/logout"><i class="material-icons left"></i><%= currentUser %> Log Out</a></li>
+          <% } else { %>
+            <li><a href="/auth/github/"><i class="material-icons left"></i>Login with Github</a></li>
+            <% } %>
+        </ul>

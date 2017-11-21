@@ -19,9 +19,13 @@ function editQuestion(req, res) {
 }
 
 function newQuestion(req, res) {
-  Quiz.findById(req.params.id, (err, quiz) => {
-  res.render(`./questions/new`, {quiz: quiz})
-});
+  if (res.locals.currentUser.instructor) { 
+    Quiz.findById(req.params.id, (err, quiz) => {
+      res.render(`./questions/new`, {quiz: quiz})
+    });
+  } else {
+    res.redirect('/');
+  }
 }
 
 function createQuestion(req, res) {
@@ -53,10 +57,10 @@ function newOption(req, res) {
 }
 
 function createOption(req, res) {
-console.log(req.body);
 Quiz.findOne({'questions._id': req.params.questionId}, (err, quiz) => {
-  var question = quiz.questions.id(req.params.questionId)
-  question.options.push(req.body)
+  var question = quiz.questions.id(req.params.questionId);
+  question.options.push(req.body);
+  if (question.options.length === 1) question.correctAnswer = question.options[0]._id;
   quiz.save((err) => {
     res.redirect(`/quizzes/questions/${question.id}/options/new`)
     });
@@ -64,14 +68,30 @@ Quiz.findOne({'questions._id': req.params.questionId}, (err, quiz) => {
 }
 
 function deleteOption(req, res) {
-    Quiz.findOne({'questions._id': req.params.questionId}, (err, quiz) => {
-    var question = quiz.questions.id(req.params.questionId)
+    Quiz.findOne({'questions.options._id': req.params.optionId}, (err, quiz) => {
+    var question = quiz.questions.find(question => question.options.some(opt => opt._id.equals(req.params.optionId)));
     question.options.remove(req.params.optionId)
+    console.log(question.correctAnswer, req.params.optionId);
+    if (question.correctAnswer === parseInt(req.params.optionId)) {
+      question.correctAnswer = question.options[0]._id;
+    } else if (question.options.length === 0) question.correctAnswer = null;
     quiz.save((err) => {
-      res.redirect(`/quizzes/questions/${req.params.questionId}/options/new`);
+      res.redirect(`/quizzes/questions/${question._id}/options/new`);
     });
   });
 }
+
+function setAnswer(req, res) {
+  Quiz.findOne({'questions.options._id': req.params.id}, (err, quiz) => {
+    var question = quiz.questions.find(question => question.options.some(opt => opt._id.equals(req.params.id)));
+    question.correctAnswer = req.params.id;
+    quiz.save((err) => {
+      res.redirect(`/quizzes/questions/${question._id}/options/new`);
+    });
+  });
+}
+
+
 
 
 module.exports = {
@@ -83,5 +103,7 @@ module.exports = {
   deleteQuestion,
   newOption,
   createOption,
-  deleteOption
+  deleteOption,
+  setAnswer
+
 }

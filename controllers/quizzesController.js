@@ -13,14 +13,16 @@ function show(req, res) {
 }
 
 function newQuiz(req, res) {
-  res.render('./quizzes/new');
+  if (res.locals.currentUser.instructor) { 
+    res.render('./quizzes/new');
+  } else {
+    res.redirect('/');
+  }
 }
 
 function create(req, res) {
   var quiz = new Quiz(req.body);
-  // quiz.question.push(req.body.question);
   if (quiz.save()) {
-    console.log(quiz)
     res.redirect(`/quizzes/${quiz.id}`);
   } else {
     res.render('./quizzes/new', {quiz});
