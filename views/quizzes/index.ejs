@@ -1,39 +1,49 @@
 <%- include('../_partials/head') %>
 <%- include('../_partials/navInstructor') %>
-    <h1 class="center">Quizzes</h1>
+  <h1 class="center">Quizzes</h1>
   <div class="center">
     <% quizzes.forEach((quiz) => { %>
-        <h2><a href="/quizzes/<%= quiz.id %>"><%= quiz.name %></a></h2>
-        <% if(currentUser.instructor) { %>
-          <form action="/quizzes/<%= quiz.id %>?_method=DELETE" method="POST">
-            <input class="center" type="submit" value="Delete">
-          </form>
+      <h2>
+        <a href="/quizzes/<%= quiz.id %>">
+          <%= quiz.name %>
+        </a>
+      </h2>
+      <% if(currentUser.instructor) { %>
+        <form action="/quizzes/<%= quiz.id %>?_method=DELETE" method="POST">
+          <input class="center" type="submit" value="Delete">
+        </form>
         <% } %>
-    <% }) %>
-    
-    <% if(currentUser.instructor) { %>
-      <h1><a class="center" href="/quizzes/new">Create Quiz</a></h1>
-    <% } %>
-  </div>
-  <form>
-      <div class="form-group">
-  <div class="form-group">
-      <label for="exampleFormControlSelect2">Example multiple select</label>
-      <select multiple class="form-control" id="exampleFormControlSelect2">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
+          <% }) %>
+
+            <% if(currentUser.instructor) { %>
+              <h1>
+                <a class="center" href="/quizzes/new">Create Quiz</a>
+              </h1>
+              <% } %>
     </div>
-    <div class="form-group">
-        <label for="exampleFormControlTextarea1">Example textarea</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <form action="/quizzes/getquiz" method="POST">
+      <div class="form-group">
+          <label for="exampleFormControlSelect2">Example multiple select</label>
+          <select name="quizName" class="form-control" id="exampleFormControlSelect2">
+            <% quizzes.forEach((quiz) => { %>
+                <option value="<%= quiz._id %>">
+                  <%= quiz.name %>
+                </option>
+                <% }) %>
+          </select>
       </div>
-    
-  </form>
+      <div>
+        <input class="btn btn-success" type="submit">
+      </div>
+    </form>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
 
     <%- include('../_partials/footer') %>
-
-

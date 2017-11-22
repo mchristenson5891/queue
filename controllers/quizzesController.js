@@ -1,7 +1,9 @@
 var Quiz = require('./../models/Quiz');
 
 function index(req, res) {
-  console.log(Quiz);
+  console.log('hello');
+  if (!req.user) return res.redirect('/');
+
   Quiz.find({}, (err,quizzes) => {
     res.render('./quizzes/index', {quizzes});
   });
@@ -10,7 +12,12 @@ function index(req, res) {
 function show(req, res) {
   Quiz.findById(req.params.id, (err, quiz) => {
     res.render('./quizzes/show', {quiz})
-});
+  });
+}
+
+function getQuiz(req, res) {
+  console.log('req.body = ', req.body);
+  res.redirect(`/quizzes/${req.body.quizName}`);
 }
 
 function newQuiz(req, res) {
@@ -42,5 +49,6 @@ module.exports = {
   show,
   newQuiz,
   create,
-  deleteQuiz
+  deleteQuiz,
+  getQuiz
 }
