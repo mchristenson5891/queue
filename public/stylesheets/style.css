@@ -8,7 +8,7 @@ body {
 }
 
 .center {
-  margin-top: 20px;
+  margin-top: 30px;
   text-align: center !important;
 }
 
@@ -41,11 +41,24 @@ body {
   margin: 15px;
 }
 
-/* .card {
-  border: solid black;
-  border-radius: 100px;
-  margin: 20px;
-} */
+.quiz {
+  margin-top: 30px;
+  height: 300px;
+  width: 300px;
+}
+
+
+.make-quiz {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row /* works with row or column */
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
 
 
 
