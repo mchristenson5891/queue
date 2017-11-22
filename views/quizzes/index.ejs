@@ -1,6 +1,6 @@
 <%- include('../_partials/head') %>
 <%- include('../_partials/navInstructor') %>
-
+<!-- vv This is top multiple text selector from -->
   <h1 class="center bold">Quizzes</h1>
   <div class="margin">
       <form action="/quizzes/getquiz" method="POST">
@@ -21,6 +21,8 @@
       </div>
       <br>
 
+      <!--================================================================================-->
+
 
 <div class="card-group">
 <% quizzes.forEach((quiz) => { %>
@@ -30,15 +32,26 @@
         <p class="card-text margin-small">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <p class="center"><a class="center btn btn-success" href="/quizzes/<%= quiz.id %>">Show
         </a></p>
+        <% if (currentUser  && currentUser.instructor === false) {  %>
+      </div>
+    </div>  
+    <% } %>
         <% if(currentUser && currentUser.instructor) { %>
           <form action="/quizzes/<%= quiz.id %>?_method=DELETE" method="POST" class="center delete">
             <input class="center-inline btn btn-danger" type="submit" value="Delete">
            </form>
           </div>
-        </div> 
+        </div>
         <% } %>
-          <% }) %>     
+        <% }) %>    
       </div>
+     
+      
+
+
+      <!-------->
+
+
             <% if(currentUser && currentUser.instructor) { %>
               <h1 class="center">
                 <a class="center btn btn-success" href="/quizzes/new">Create a Quiz</a>
