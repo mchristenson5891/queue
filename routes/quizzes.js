@@ -3,7 +3,7 @@ var router = express.Router();
 var quizzes = require('./../controllers/quizzesController');
 var questions = require('./../controllers/questionsController');
 
-router.get('/', quizzes.index);
+router.get('/', isLoggedIn, quizzes.index);
 router.get('/new', isInstructor, quizzes.newQuiz);
 router.post('/', isInstructor, quizzes.create);
 router.get('/:id', isLoggedIn, quizzes.show);
@@ -24,7 +24,7 @@ module.exports = router;
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
-  res.redirect('/auth/google');
+  res.redirect('/auth/github');
 }
 
 function isInstructor(req, res, next) {

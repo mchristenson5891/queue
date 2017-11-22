@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-</body>
-</html>
+<%- include('../_partials/head') %>
+<%- include('../_partials/navInstructor') %>
+<h1>Students</h1>
+
+<% students.forEach((student) => { %>
+<% if (!student.instructor) { %> 
+    <a href="/students/<%= student._id %>"><%= student.githubUserName %></a>
+    <% } %>
+<% }) %>
+
+
+<%- include('../_partials/footer') %>
