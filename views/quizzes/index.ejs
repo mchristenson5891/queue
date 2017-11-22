@@ -1,8 +1,8 @@
 <%- include('../_partials/head') %>
 <%- include('../_partials/navInstructor') %>
-
-  <h1 class="center">Quizzes</h1>
-  <div class="right">
+<!-- vv This is top multiple text selector from -->
+  <h1 class="center bold">Quizzes</h1>
+  <div class="margin">
       <form action="/quizzes/getquiz" method="POST">
         <div class="form-group">
             <label for="exampleFormControlSelect2">Show a Quiz</label>
@@ -21,31 +21,42 @@
       </div>
       <br>
 
+      <!--================================================================================-->
+
 
 <div class="card-group">
 <% quizzes.forEach((quiz) => { %>
   <div class="card">
       <div class="card-block">
-          <h4 class="card-title"><%= quiz.name %></h4>
-        <p><a href="/quizzes/<%= quiz.id %>">Show
+          <h4 class="card-title center"><%= quiz.name %></h4>
+        <p class="card-text margin-small">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <p class="center"><a class="center btn btn-success" href="/quizzes/<%= quiz.id %>">Show
         </a></p>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <% if (currentUser  && currentUser.instructor === false) {  %>
+      </div>
+    </div>  
+    <% } %>
         <% if(currentUser && currentUser.instructor) { %>
-          <form action="/quizzes/<%= quiz.id %>?_method=DELETE" method="POST">
-            <input class="center" type="submit" value="Delete">
+          <form action="/quizzes/<%= quiz.id %>?_method=DELETE" method="POST" class="center delete">
+            <input class="center-inline btn btn-danger" type="submit" value="Delete">
            </form>
           </div>
-        </div> 
+        </div>
         <% } %>
-          <% }) %>     
+        <% }) %>    
       </div>
+     
+      
+
+
+      <!-------->
+
 
             <% if(currentUser && currentUser.instructor) { %>
-              <h1>
-                <a class="center" href="/quizzes/new">Create Quiz</a>
+              <h1 class="center">
+                <a class="center btn btn-success" href="/quizzes/new">Create a Quiz</a>
               </h1>
               <% } %>
-
     <br>
     <br>
     <br>
@@ -53,6 +64,4 @@
     <br>
     <br>
     <br>
-
-
     <%- include('../_partials/footer') %>
