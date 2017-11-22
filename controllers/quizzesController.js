@@ -17,11 +17,7 @@ function getQuiz(req, res) {
 }
 
 function newQuiz(req, res) {
-  if (res.locals.currentUser.instructor) {
-    res.render('./quizzes/new');
-  } else {
-    res.redirect('/');
-  }
+  res.render('./quizzes/new');
 }
 
 function create(req, res) {

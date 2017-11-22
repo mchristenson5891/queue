@@ -4,30 +4,30 @@ var quizzes = require('./../controllers/quizzesController');
 var questions = require('./../controllers/questionsController');
 
 router.get('/', quizzes.index);
-router.get('/new', isLoggedIn, quizzes.newQuiz);
-router.post('/', isLoggedIn, quizzes.create);
-router.get('/:id', quizzes.show);
-router.delete('/:id', isLoggedIn, quizzes.deleteQuiz);
-router.get('/:id/questions/new', questions.newQuestion);
-router.post('/:id/questions', isLoggedIn, questions.createQuestion);
-router.delete('/questions/:questionId', isLoggedIn, questions.deleteQuestion);
-router.get('/questions/:questionId', questions.showQuestion);
-router.get('/questions/:questionId/options/new', isLoggedIn, questions.newOption);
-router.post('/questions/:questionId/options', isLoggedIn, questions.createOption);
-router.delete('/options/:optionId', isLoggedIn, questions.deleteOption);
-router.put('/options/:id/set', isLoggedIn, questions.setAnswer);
-router.post('/getquiz',quizzes.getQuiz);
-router.post('/answers', questions.createAnswer);
-router.get('/:id/results', quizzes.results);
-
+router.get('/new', isInstructor, quizzes.newQuiz);
+router.post('/', isInstructor, quizzes.create);
+router.get('/:id', isLoggedIn, quizzes.show);
+router.delete('/:id', isInstructor, quizzes.deleteQuiz);
+router.get('/:id/questions/new', isInstructor, questions.newQuestion);
+router.post('/:id/questions', isInstructor, questions.createQuestion);
+router.delete('/questions/:questionId', isInstructor, questions.deleteQuestion);
+router.get('/questions/:questionId', isLoggedIn, questions.showQuestion);
+router.get('/questions/:questionId/options/new', isInstructor, questions.newOption);
+router.post('/questions/:questionId/options', isInstructor, questions.createOption);
+router.delete('/options/:optionId', isInstructor, questions.deleteOption);
+router.put('/options/:id/set', isInstructor, questions.setAnswer);
+// router.post('/getquiz',quizzes.getQuiz);
+router.post('/answers', isLoggedIn, questions.createAnswer);
+router.get('/:id/results', isLoggedIn, quizzes.results);
 
 module.exports = router;
 
 function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    if (res.locals.currentUser.instructor) return next();
-    res.redirect('/');
-  }else {
-    res.redirect('/auth/github/');
-  }
+  if (req.isAuthenticated()) return next();
+  res.redirect('/auth/google');
+}
+
+function isInstructor(req, res, next) {
+  if(res.locals.currentUser.instructor) return next();
+  res.redirect('/quizzes');
 }
