@@ -1,17 +1,55 @@
 var Question = require('./../models/Quiz');
 var Quiz = require('./../models/Quiz');
 
+
 function index(req, res) {
   res.render('./questions/index');
 }
 
-function showQuestion(req, res) {
-  console.log(req.params)
+function showQuestion(req, res) { 
   Quiz.findOne({'questions._id':req.params.questionId}, (err, quiz) => {
-    var question = quiz.questions.id(req.params.questionId)
+    var question = quiz.questions.id(req.params.questionId);
+    if (req.user.answers.some(answer => {
+      answer.questionId.equals(question._id)})) {
+      var nextQuestionId = getNextQuestion(quiz, question);
+      if (nextQuestionId) {
+        question = quiz.questions.id(nextQuestionId);
+      } else {
+        return res.redirect("/quizzes");
+      }
+    }
     res.render('./questions/show', {question})
   });
 }
+
+function createAnswer(req, res) {
+  // get quiz
+  var answer = req.body.selectedOption;
+  Quiz.findOne({'questions.options._id': answer}, (err, quiz) => {
+    var question = quiz.questions.find(q => q.options.some(opt => opt._id.equals(answer)));
+    // insure question hasn't been answered
+    if (!req.user.answers.some(answer => answer.questionId.equals(question._id))) {
+      // push answers subdoc into req.user.answers (compute result)
+      req.user.answers.push({
+        choice: answer,
+        result: (question.correctAnswer.equals(answer)),
+        questionId: question._id
+      });
+    }
+    // save req.user
+    req.user.save((err) => {
+      var nextQuestionId = getNextQuestion(quiz, question);
+      if (nextQuestionId) {
+
+        res.redirect(`/quizzes/questions/${nextQuestionId}`);
+      } else {
+        res.redirect(`/quizzes/${quiz._id}/results`);
+      }
+    });
+  });
+}
+
+
 
 function editQuestion(req, res) {
 
@@ -91,9 +129,6 @@ function setAnswer(req, res) {
   });
 }
 
-
-
-
 module.exports = {
   index,
   showQuestion,
@@ -104,6 +139,17 @@ module.exports = {
   newOption,
   createOption,
   deleteOption,
-  setAnswer
+  setAnswer,
+  createAnswer
+}
 
+//helper functions 
+
+function getNextQuestion(quiz, question) {
+  var indexOfQuestion = quiz.questions.indexOf(question);
+  if (quiz.questions[indexOfQuestion + 1] === undefined) {
+    return null;
+  } else {
+    return quiz.questions[indexOfQuestion + 1].id;
+  }
 }
