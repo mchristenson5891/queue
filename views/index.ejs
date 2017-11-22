@@ -1,7 +1,11 @@
+<%- include('./_partials/head') %>
+    <%- include('./_partials/navInstructor') %>
+
+
+
+
         <ul class="right">
-          <% if (currentUser) { %>
-            <li><a href="/logout"><i class="material-icons left"></i><%= currentUser %> Log Out</a></li>
-          <% } else { %>
-            <li><a href="/auth/github/"><i class="material-icons left"></i>Login with Github</a></li>
-            <% } %>
+   
         </ul>
+
+<%- include('./_partials/footer') %>

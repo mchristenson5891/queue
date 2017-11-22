@@ -1,6 +1,7 @@
 var Quiz = require('./../models/Quiz');
 
 function index(req, res) {
+  console.log(Quiz);
   Quiz.find({}, (err,quizzes) => {
     res.render('./quizzes/index', {quizzes});
   });
