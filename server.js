@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({
   secret: "Queue",
-  reave: false,
+  resave: false,
   saveUninitialized: true
 }));
 app.use(passport.initialize());
