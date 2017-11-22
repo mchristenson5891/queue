@@ -1,41 +1,50 @@
 <%- include('../_partials/head') %>
 <%- include('../_partials/navInstructor') %>
-  <h1 class="center">Quizzes</h1>
-  <div class="center">
-    <% quizzes.forEach((quiz) => { %>
-      <h2>
-        <a href="/quizzes/<%= quiz.id %>">
-          <%= quiz.name %>
-        </a>
-      </h2>
-      <% if(currentUser.instructor) { %>
-        <form action="/quizzes/<%= quiz.id %>?_method=DELETE" method="POST">
-          <input class="center" type="submit" value="Delete">
-        </form>
-        <% } %>
-          <% }) %>
 
-            <% if(currentUser.instructor) { %>
+  <h1 class="center">Quizzes</h1>
+  <div class="right">
+      <form action="/quizzes/getquiz" method="POST">
+        <div class="form-group">
+            <label for="exampleFormControlSelect2">Show a Quiz</label>
+            <select name="quizName" class="form-control" id="exampleFormControlSelect2">
+              <% quizzes.forEach((quiz) => { %>
+                  <option value="<%= quiz._id %>">
+                    <%= quiz.name %>
+                  </option>
+                  <% }) %>
+            </select>
+        </div>
+        <div>
+          <input class="btn btn-success" type="submit">
+        </div>
+      </form>
+      </div>
+      <br>
+
+
+<div class="card-group">
+<% quizzes.forEach((quiz) => { %>
+  <div class="card">
+      <div class="card-block">
+          <h4 class="card-title"><%= quiz.name %></h4>
+        <p><a href="/quizzes/<%= quiz.id %>">Show
+        </a></p>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <% if(currentUser && currentUser.instructor) { %>
+          <form action="/quizzes/<%= quiz.id %>?_method=DELETE" method="POST">
+            <input class="center" type="submit" value="Delete">
+           </form>
+          </div>
+        </div> 
+        <% } %>
+          <% }) %>     
+      </div>
+
+            <% if(currentUser && currentUser.instructor) { %>
               <h1>
                 <a class="center" href="/quizzes/new">Create Quiz</a>
               </h1>
               <% } %>
-    </div>
-    <form action="/quizzes/getquiz" method="POST">
-      <div class="form-group">
-          <label for="exampleFormControlSelect2">Example multiple select</label>
-          <select name="quizName" class="form-control" id="exampleFormControlSelect2">
-            <% quizzes.forEach((quiz) => { %>
-                <option value="<%= quiz._id %>">
-                  <%= quiz.name %>
-                </option>
-                <% }) %>
-          </select>
-      </div>
-      <div>
-        <input class="btn btn-success" type="submit">
-      </div>
-    </form>
 
     <br>
     <br>

@@ -9,6 +9,14 @@
   text-align: center !important;
 }
 
+.cards {
+  display: flex;
+}
+
+.card {
+  order: 0; 
+}
+
 
 
 

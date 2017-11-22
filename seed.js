@@ -4,7 +4,7 @@ require('./config/database');
 var User = require('./models/User');
 
 // Import our Mongoose models
-const Teacher = require('./models/User');
+// const Teacher = require('./models/User');
 
 // Destroy all data in database
 const seed = Promise.all([User.remove({})])
@@ -14,6 +14,7 @@ seed.then(() => {
     return User.create([
         { fullName: 'Jim', instructor: true },
         { fullName: 'Jon', instructor: true },
+      mike
         { githubUserName: 'mchristenson5891', instructor: false },
         { githubUserName: 'pfinazzo', instructor: true}
     ])
