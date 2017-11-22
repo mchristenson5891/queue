@@ -1,7 +1,7 @@
 <%- include('../_partials/head') %>
 <%- include('../_partials/navInstructor') %>
 
-  <h1 class="center">Quizzes</h1>
+  <h1 class="center bold">Quizzes</h1>
   <div class="margin">
       <form action="/quizzes/getquiz" method="POST">
         <div class="form-group">
@@ -26,8 +26,8 @@
 <% quizzes.forEach((quiz) => { %>
   <div class="card">
       <div class="card-block">
-          <h4 class="card-title"><%= quiz.name %></h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <h4 class="card-title center"><%= quiz.name %></h4>
+        <p class="card-text margin-small">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <p class="center"><a class="center btn btn-success" href="/quizzes/<%= quiz.id %>">Show
         </a></p>
         <% if(currentUser && currentUser.instructor) { %>

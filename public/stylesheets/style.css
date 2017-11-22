@@ -1,4 +1,7 @@
-
+body {
+ background-image: url(https://i.pinimg.com/originals/0d/9b/24/0d9b24189f42fb3f2563ef854b41ab0f.png);
+ font-family: 'Montserrat', sans-serif; 
+}
 .white {
   color: white !important;
   padding: 10px;
@@ -7,6 +10,10 @@
 .center {
   margin-top: 20px;
   text-align: center !important;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 .delete {
@@ -21,11 +28,17 @@
 
 .card {
   margin: 60px;
-  border: solid black;
 }
 
 .margin {
   margin: 50px;
+}
+
+.margin-top {
+  margin-top: 30px;
+}
+.margin-small {
+  margin: 15px;
 }
 
 /* .card {
