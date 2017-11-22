@@ -20,3 +20,8 @@ router.post('/getquiz', quizzes.getQuiz)
 
 
 module.exports = router;
+
+function isLoggedIn(req, res, next) {
+  if (req.currentUser.instructor) return next();
+  res.redirect('/auth/google');
+}

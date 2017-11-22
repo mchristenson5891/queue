@@ -42,6 +42,7 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+
 app.use(function(req, res, next) {
   res.locals.currentUser = req.user;
   next();
@@ -50,9 +51,6 @@ app.use(function(req, res, next) {
 app.use('/', index);
 app.use('/students', students);
 app.use('/quizzes', quizzes);
-// app.use('/instructors', instructors);
-// app.use('/quizzes/:id/questions', questions);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
