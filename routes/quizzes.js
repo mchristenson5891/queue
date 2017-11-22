@@ -16,6 +16,7 @@ router.get('/questions/:questionId/options/new', questions.newOption);
 router.post('/questions/:questionId/options', questions.createOption);
 router.delete('/options/:optionId', questions.deleteOption);
 router.put('/options/:id/set', questions.setAnswer);
+router.post('/getquiz', quizzes.getQuiz)
 
 
 module.exports = router;
