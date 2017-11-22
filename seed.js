@@ -4,7 +4,7 @@ var User = require('./models/User');
 require('dotenv').config();
 
 // Import our Mongoose models
-const Teacher = require('./models/User');
+// const Teacher = require('./models/User');
 
 // Destroy all data in database
 const seed = Promise.all([User.remove({})])
@@ -15,7 +15,7 @@ seed.then(() => {
         { fullName: 'Jim', instructor: true },
         { fullName: 'Jon', instructor: true },
         { githubUserName: 'mchristenson5891', instructor: true },
-        { githubUserName: 'pfinazzo', instructor: true}
+        { githubUserName: 'pfinazzo', instructor: false}
     ])
 })
 

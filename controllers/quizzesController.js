@@ -16,7 +16,6 @@ function show(req, res) {
 }
 
 function getQuiz(req, res) {
-  console.log('req.body = ', req.body);
   res.redirect(`/quizzes/${req.body.quizName}`);
 }
 
