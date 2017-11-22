@@ -9,13 +9,30 @@
   text-align: center !important;
 }
 
-.cards {
-  display: flex;
+.delete {
+  margin: 20px;
+}
+
+.center-inline {
+  margin-top: 20px;
+  text-align: center !important;
+  display: inline;
 }
 
 .card {
-  order: 0; 
+  margin: 60px;
+  border: solid black;
 }
+
+.margin {
+  margin: 50px;
+}
+
+/* .card {
+  border: solid black;
+  border-radius: 100px;
+  margin: 20px;
+} */
 
 
 
