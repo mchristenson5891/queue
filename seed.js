@@ -1,7 +1,7 @@
 // First we must require our database
+require('dotenv').config();
 require('./config/database');
 var User = require('./models/User');
-require('dotenv').config();
 
 // Import our Mongoose models
 // const Teacher = require('./models/User');
@@ -14,8 +14,9 @@ seed.then(() => {
     return User.create([
         { fullName: 'Jim', instructor: true },
         { fullName: 'Jon', instructor: true },
-        { githubUserName: 'mchristenson5891', instructor: true },
-        { githubUserName: 'pfinazzo', instructor: false}
+      mike
+        { githubUserName: 'mchristenson5891', instructor: false },
+        { githubUserName: 'pfinazzo', instructor: true}
     ])
 })
 

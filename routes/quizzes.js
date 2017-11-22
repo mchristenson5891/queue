@@ -4,24 +4,30 @@ var quizzes = require('./../controllers/quizzesController');
 var questions = require('./../controllers/questionsController');
 
 router.get('/', quizzes.index);
-router.get('/new', quizzes.newQuiz);
-router.post('/', quizzes.create);
+router.get('/new', isLoggedIn, quizzes.newQuiz);
+router.post('/', isLoggedIn, quizzes.create);
 router.get('/:id', quizzes.show);
-router.delete('/:id', quizzes.deleteQuiz);
+router.delete('/:id', isLoggedIn, quizzes.deleteQuiz);
 router.get('/:id/questions/new', questions.newQuestion);
-router.post('/:id/questions', questions.createQuestion);
-router.delete('/questions/:questionId', questions.deleteQuestion);
+router.post('/:id/questions', isLoggedIn, questions.createQuestion);
+router.delete('/questions/:questionId', isLoggedIn, questions.deleteQuestion);
 router.get('/questions/:questionId', questions.showQuestion);
-router.get('/questions/:questionId/options/new', questions.newOption);
-router.post('/questions/:questionId/options', questions.createOption);
-router.delete('/options/:optionId', questions.deleteOption);
-router.put('/options/:id/set', questions.setAnswer);
-router.post('/getquiz', quizzes.getQuiz)
+router.get('/questions/:questionId/options/new', isLoggedIn, questions.newOption);
+router.post('/questions/:questionId/options', isLoggedIn, questions.createOption);
+router.delete('/options/:optionId', isLoggedIn, questions.deleteOption);
+router.put('/options/:id/set', isLoggedIn, questions.setAnswer);
+router.post('/getquiz',quizzes.getQuiz);
+router.post('/answers', questions.createAnswer);
+router.get('/:id/results', quizzes.results);
 
 
 module.exports = router;
 
 function isLoggedIn(req, res, next) {
-  if (req.currentUser.instructor) return next();
-  res.redirect('/auth/google');
+  if (req.isAuthenticated()) {
+    if (res.locals.currentUser.instructor) return next();
+    res.redirect('/');
+  }else {
+    res.redirect('/auth/github/');
+  }
 }

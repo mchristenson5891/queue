@@ -1,27 +1,29 @@
 <%- include('../_partials/head') %>
 <%- include('../_partials/navInstructor') %>
-<h1> <%= quiz.name %></h1> 
+<h1> <%= quiz.name %></h1>
+<h2><%= quiz %></h2>
 <button class="edit">Edit Quiz Name</button>
 
 <br>
   <div class="row">
    <h2><a href='/quizzes/<%= quiz.id %>/questions/new'>Make a Question</a></h2>
   </div>
+  <a href='/quizzes/questions/<%= quiz.questions[0].id %>'><button>start quiz</button></a>
 
-<ol>  
+<ol>
     <% quiz.questions.forEach((question) => { %>
-    <% if(currentUser.instructor) { %>
+    <% if(currentUser && currentUser.instructor) { %>
       <li>&nbsp&nbsp<a href='/quizzes/questions/<%= question.id %>'><%= question.question %></a></li>
       <% } else { %>
             <li>&nbsp&nbsp<%= question.question %></li>
             <% } %>
-             <% if(currentUser.instructor) { %>
+             <% if(currentUser && currentUser.instructor) { %>
           <form action="/quizzes/<%= quiz.id %>?_method=DELETE" method="POST">
             <input type="submit" value="Delete">
           </form>
         <% } %>
   <% }) %>
-         
+
 
 </ol>
 <%- include('../_partials/footer') %>

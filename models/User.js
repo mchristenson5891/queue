@@ -4,8 +4,8 @@ var findOrCreate = require('mongoose-find-or-create')
 var answerSchema = new mongoose.Schema({
   choice: mongoose.Schema.Types.ObjectId,
   result: Boolean,
-  questionId: [{ type: mongoose.Schema.Types.ObjectId,
-                ref: 'Question' }]
+  questionId: { type: mongoose.Schema.Types.ObjectId,
+                ref: 'Question' }
 });
 
 var userSchema = new mongoose.Schema({

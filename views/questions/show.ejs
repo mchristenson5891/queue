@@ -2,18 +2,22 @@
 <%- include('../_partials/head') %>
 <%- include('../_partials/navInstructor') %>
 
-<h2>Question:</h2>
-
-<h1><%= question.question %></h1>
-
+<h2>Question: <span><%= question.question %></span></h2>
 
 <a href='/quizzes/questions/<%= question.id %>/options/new'>Create an Answer</a>
-<h2>Answers</h2>
 
-<% question.options.forEach((option) => { %>
-  
-  <li><%= option.option %>&nbsp&nbsp 
-  
-<% }) %>
+<h2>Answers</h2>
+<% var alphas = ['A', 'B', 'C', 'D', 'E', 'F', 'G']%>
+<form action="/quizzes/answers" method="POST">
+  <% question.options.forEach((option, idx) => { %>
+  <label>
+    <%= alphas[idx] %>&nbsp;
+    <input type="radio" name="selectedOption" value= <%= option.id %>> &nbsp;
+    <%= option.option %>
+  </label><br>
+  <% }) %>
+  <input type="submit" value="Submit Answer">
+</form>
+
 <%- include('../_partials/footer') %>
 
