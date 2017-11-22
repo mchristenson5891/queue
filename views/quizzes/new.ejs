@@ -1,16 +1,22 @@
 <%- include('../_partials/head') %>
 <%- include('../_partials/navInstructor') %>
 <body>
-  <div class="container">
-    <h1>Make a Quiz</h1>
-  
-    <form action='/quizzes' method='POST'>
-      <h3>Type of Quiz</h3>
-      <input type="text" placeholder="Quiz Name" name="name"><br><br>
-     
-      <input type='submit' value='Create Quiz'>
-    </form>
-  <div>
+
+
+<div class="container center">
+  <div class="make-quiz">
+    <div class="card text-black mb-3 quiz" style="max-width: 40rem;">
+      <h2><div class="card-header bg-dark text-white">Make a Quiz</div></h2>
+      <div class="card-body">
+        <p class="card-text">    
+          <form action='/quizzes' method='POST'>
+          <input type="text" placeholder="Quiz Name" name="name"><br><br><br>
+          <input class="btn btn-success" type='submit' value='Create Quiz'>
+          </form>
+        </p>
+      </div>
+    </div>
+  </div>
       <%- include('../_partials/footer') %>  
 </body>
 </html>
