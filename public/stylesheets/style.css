@@ -1,7 +1,6 @@
 body {
  background-image: url(https://i.pinimg.com/originals/0d/9b/24/0d9b24189f42fb3f2563ef854b41ab0f.png);
  font-family: 'Montserrat', sans-serif; 
- padding: 0 50px;
 }
 
 ul {
@@ -9,9 +8,31 @@ ul {
   padding-left: 0px;
 }
 
+main {
+  padding: 50px;
+}
+
+header {
+  background-color: #343a40!important;
+}
+
 a:hover {
   text-decoration: none;
 }
+
+a.nav-link:hover {
+  color: gray!important;
+}
+
+.navbar-brand {
+  font-size:24px;
+}
+
+.navbar {
+  margin: 0 50px;
+}
+
+
 
 .white {
   color: white !important;

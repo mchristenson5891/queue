@@ -1,4 +1,5 @@
 var Student = require('./../models/User');
+var Quiz = require('./../models/Quiz');
 
 function index(req, res) {
   Student.find({}, (err, students) => {
@@ -7,8 +8,11 @@ function index(req, res) {
 }
 
 function show(req, res) {
+  var studentQuizzes = [];
   Student.findById(req.params.id, (err, student) => {
-    res.render('./students/show', {student});
+    Quiz.find({}, (err, quiz) => {
+      res.render('./students/show', {student, quiz});
+    })       
   })
 }
 
