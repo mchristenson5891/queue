@@ -14,14 +14,12 @@ seed.then(() => {
     return User.create([
         { fullName: 'Jim', instructor: true },
         { fullName: 'Jon', instructor: true },
-<<<<<<< HEAD
-        { githubUserName: 'mchristenson5891', instructor: true},
-        { githubUserName: 'pfinazzo', instructor: false}
-=======
-        { githubUserName: 'mchristenson5891', instructor: true },
-        { githubUserName: 'pfinazzo', instructor: true},
+        { githubUserName: 'Bobby', instructor: false},
+        { githubUserName: 'mchristenson5891', instructor: true, cohort: "44" },
+        { githubUserName: 'Time', instructor: false},
+        { githubUserName: 'Dani', instructor: false, cohort: "45"},
         { githubUserName: 'prancy', instructor: true }
->>>>>>> e89a0f07e184cd1d3acd0c659d32306dcedf93f6
+
     ])
 })
 

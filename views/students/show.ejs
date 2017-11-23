@@ -1,0 +1,10 @@
+
+
+
+<h1><%= student %></h1>
+
+<a href="/students/<% student.id %>/quizzes">quizzes</a>
+
+<% student.quizzes.forEach((quiz) => { %>
+  <a href="/quizzes/<%= quiz %>">quiz 1</a>
+<% }) %> 
