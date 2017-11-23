@@ -1,2 +1,27 @@
 <h1>Quiz Results</h1>
 
+<h2><%= quiz.name %></h2>
+
+<% var alphas = ['A', 'B', 'C', 'D', 'E', 'F'] %>
+    <% var correctAnswers = 0 %>
+<% quiz.questions.forEach((question, idx) => { %>
+  <div class="question">
+    <p><span><%= idx + 1 %>) </span> <%= question.question %></p>
+    <% var answer = user.answers.find(answer => answer.questionId.equals(question._id)) %>
+    <span class="result-message"><%= answer.result ? 'Correct' : 'Incorrect' %></span>
+    <ul>
+      <% question.options.forEach((option, idx) => { %> 
+        <li>
+          <span><%= alphas[idx] %></span> <%= option.option %> 
+          <%= (question.correctAnswer == option.id) ? 'Correct Answer' : null %>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+      <% answer.result ? correctAnswers++ : null %> 
+
+<% }) %>
+
+<h1>You scored <%= (correctAnswers /  quiz.questions.length ) * 100 %>% </h1> 
+
+

@@ -1,21 +1,64 @@
-
+body {
+ background-image: url(https://i.pinimg.com/originals/0d/9b/24/0d9b24189f42fb3f2563ef854b41ab0f.png);
+ font-family: 'Montserrat', sans-serif; 
+}
 .white {
   color: white !important;
   padding: 10px;
 }
 
 .center {
-  margin-top: 20px;
+  margin-top: 30px;
   text-align: center !important;
 }
 
-.cards {
-  display: flex;
+.bold {
+  font-weight: bold;
+}
+
+.delete {
+  margin: 20px;
+}
+
+.center-inline {
+  margin-top: 20px;
+  text-align: center !important;
+  display: inline;
 }
 
 .card {
-  order: 0; 
+  margin: 60px;
 }
+
+.margin {
+  margin: 50px;
+}
+
+.margin-top {
+  margin-top: 30px;
+}
+.margin-small {
+  margin: 15px;
+}
+
+.quiz {
+  margin-top: 30px;
+  height: 300px;
+  width: 300px;
+}
+
+
+.make-quiz {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row /* works with row or column */
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
 
 
 

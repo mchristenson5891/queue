@@ -40,7 +40,6 @@ function createAnswer(req, res) {
     req.user.save((err) => {
       var nextQuestionId = getNextQuestion(quiz, question);
       if (nextQuestionId) {
-
         res.redirect(`/quizzes/questions/${nextQuestionId}`);
       } else {
         res.redirect(`/quizzes/${quiz._id}/results`);
@@ -48,8 +47,6 @@ function createAnswer(req, res) {
     });
   });
 }
-
-
 
 function editQuestion(req, res) {
 

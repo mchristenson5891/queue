@@ -1,9 +1,18 @@
 var Student = require('./../models/User');
 
 function index(req, res) {
-  res.render('./students/index');
+  Student.find({}, (err, students) => {
+    res.render('./students/index', {students});
+  });
+}
+
+function show(req, res) {
+  Student.find({}, (err, student) => {
+    res.render('./students/show', {student});
+  })
 }
 
 module.exports = {
-  index
+  index,
+  show
 }

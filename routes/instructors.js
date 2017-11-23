@@ -4,8 +4,4 @@ var instructors = require('./../controllers/instructorsController');
 
 router.get('/', instructors.index);
 
-
-
-
-
 module.exports = router;

@@ -1,9 +1,17 @@
 var Quiz = require('./../models/Quiz');
+var User = require('./../models/User');
 
 function index(req, res) {
-  Quiz.find({}, (err,quizzes) => {
-    res.render('./quizzes/index', {quizzes});
-  });
+  if (req.user.instructor) {
+    Quiz.find({}, (err,quizzes) => {
+      res.render('quizzes/index', {quizzes});
+    });
+  } else {
+    User.findById(req.user._id).populate('quizzes').exec((err, user) => {
+      res.render('./quizzes/index', {quizzes: user.quizzes });
+    })
+  }
+
 }
 
 function show(req, res) {
@@ -17,11 +25,7 @@ function getQuiz(req, res) {
 }
 
 function newQuiz(req, res) {
-  if (res.locals.currentUser.instructor) {
-    res.render('./quizzes/new');
-  } else {
-    res.redirect('/');
-  }
+  res.render('./quizzes/new');
 }
 
 function create(req, res) {
@@ -41,7 +45,9 @@ function deleteQuiz(req, res) {
 }
 
 function results(req, res) {
-  res.send('results page')
+  Quiz.findById(req.params.id, (err, quiz) => {
+    res.render("quizzes/results", {quiz, user: req.user});
+  });
 }
 
 module.exports = {
