@@ -19,6 +19,7 @@ router.put('/options/:id/set', isInstructor, questions.setAnswer);
 // router.post('/getquiz',quizzes.getQuiz);
 router.post('/answers', isLoggedIn, questions.createAnswer);
 router.get('/:id/results', isLoggedIn, quizzes.results);
+router.post('/quizzes/<%= quiz.id %>/cohort/:id', isInstructor)
 
 module.exports = router;
 
