@@ -1,0 +1,13 @@
+<%- include('../_partials/head') %>
+<%- include('../_partials/navInstructor') %>
+
+<main class="container">
+  <h2 class="text-center"><span class="student-header"><%= student.githubUserName %></span></h2>
+  <% student.quizzes.forEach((quizId, idx) => { %>
+     <a href="/quizzes/<%= quizId %>">quiz <%= idx + 1 %></a>
+  <% }) %>
+
+</main>
+
+
+
