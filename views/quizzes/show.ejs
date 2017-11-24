@@ -1,7 +1,9 @@
 <%- include('../_partials/head') %>
 <%- include('../_partials/navInstructor') %>
-<h1> <%= quiz.name %></h1>
-<button class="edit">Edit Quiz Name</button>
+<div class="container">
+  
+<h1> <%= quiz.name %><button class="edit">Edit Quiz Name</button></h1>
+
 <br>
   <div class="row">
    <button class="btn btn-e"><a href='/quizzes/<%= quiz.id %>/questions/new'>Make a Question</a></button>
@@ -26,4 +28,5 @@
         <% } %>
   <% }) %>
 </ol>
+</div>
 <%- include('../_partials/footer') %>

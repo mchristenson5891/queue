@@ -18,8 +18,9 @@ seed.then(() => {
         { githubUserName: 'mchristenson5891', instructor: true, cohort: "44" },
         { githubUserName: 'Time', instructor: false},
         { githubUserName: 'Dani', instructor: false, cohort: "45"},
-        { githubUserName: 'prancy', instructor: true }
-
+        { githubUserName: 'Billy', instructor: false, cohort: "45"},
+        { githubUserName: 'prancy', instructor: true },
+        { githubUserName: 'anessaa', instructor: true, cohort: "45"}
     ])
 })
 
