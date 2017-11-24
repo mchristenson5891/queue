@@ -1,18 +1,15 @@
-var Student = require('./../models/User');
+var User = require('./../models/User');
 var Quiz = require('./../models/Quiz');
 
 function index(req, res) {
-  Student.find({}, (err, students) => {
+  User.find({}, (err, students) => {
     res.render('./students/index', {students});
   });
 }
 
 function show(req, res) {
-  var studentQuizzes = [];
-  Student.findById(req.params.id, (err, student) => {
-    Quiz.find({}, (err, quiz) => {
-      res.render('./students/show', {student, quiz});
-    })       
+  User.findById(req.params.id).populate('quizzes').exec((err, student) => {
+    res.render('students/show', {student});
   })
 }
 
