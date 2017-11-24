@@ -12,7 +12,7 @@
         <ul class="navbar-nav ml-auto">       
           <% if (currentUser) { %>
             <li class="nav-item">
-              <span class="white nav-link"><%= currentUser.githubUserName %></span>
+              <span class="white nav-link">Welcome, <%= currentUser.githubUserName %>!</span>
             </li>
             <li class="nav-item">
               <a class= "white nav-link" href="/logout">Log Out</a>
