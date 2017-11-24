@@ -7,7 +7,7 @@ function index(req, res) {
 }
 
 function show(req, res) {
-  Student.find({}, (err, student) => {
+  Student.findById(req.params.id, (err, student) => {
     res.render('./students/show', {student});
   })
 }
