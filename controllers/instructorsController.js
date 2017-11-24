@@ -20,8 +20,15 @@ function assignQuiz(req, res) {
   })
 }
 
+function getResults(req, res) {
+  User.findById(req.params.id).populate('quizzes').exec((err, student) => {
+    res.render('instructors/results', {student, quizId: req.params.quizId});
+  })
+}
+
 
 module.exports = {
   index,
-  assignQuiz
+  assignQuiz,
+  getResults
 }

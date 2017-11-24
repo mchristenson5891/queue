@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 
 router.get('/logout', (req, res) => { 
   req.logout(); 
-  res.render('index')
+  res.redirect('/')
 });
 
 router.get('/auth/github/', passport.authenticate('github'));

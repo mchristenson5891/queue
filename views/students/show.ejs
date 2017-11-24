@@ -2,12 +2,18 @@
 <%- include('../_partials/navInstructor') %>
 
 <main class="container">
-  <h2 class="text-center"><span class="student-header"><%= student.githubUserName %></span></h2>
-  <% student.quizzes.forEach((quizId, idx) => { %>
-     <a href="/quizzes/<%= quizId %>">quiz <%= idx + 1 %></a>
-  <% }) %>
-
+  <div class="text-center">
+    <h2>
+      <span class="student-header"><%= student.githubUserName %></span>
+    </h2>
+  </div>
+  <div class="student-quizzes row text-center">
+    <% student.quizzes.forEach((quiz) => { %>
+      <div class="col col-lg-3">
+        <a href="/instructors/<%= student.id %>/quiz/<%= quiz.id %>/results"><%= quiz.name %></a>
+      </div>
+    <% }) %>
+  </div>
 </main>
-
 
 
