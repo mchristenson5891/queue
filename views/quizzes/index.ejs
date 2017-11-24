@@ -1,58 +1,59 @@
 <%- include('../_partials/head') %>
 <%- include('../_partials/navInstructor') %>
-<!-- vv This is top multiple text selector from -->
+
 <h1 class="center bold">Quizzes</h1>
-<div class="margin">
-  <form action="/quizzes/getquiz" method="POST">
-    <div class="form-group">
-      <label for="exampleFormControlSelect2">Show a Quiz</label>
-        <select name="quizName" class="form-control" id="exampleFormControlSelect2">
-          <% quizzes.forEach((quiz) => { %>
-            <option value="<%= quiz._id %>">
-              <%= quiz.name %>
-            </option>
-          <% }) %>
-        </select>
-    </div>
-    <div>
-      <input class="btn btn-success" type="submit">
-    </div>
-  </form>
-</div>
-<br>
-      <!--================================================================================-->
-<div class="card-group row">
-<% quizzes.forEach((quiz) => { %>
-  <div class="card col col-sm-4">
+<div class="card-group">
+  <% quizzes.forEach((quiz) => { %>
+    <div class="card">
       <div class="card-block">
-        <h4 class="card-title center"><%= quiz.name %></h4>
-        <p class="card-text margin-small">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <p class="center"><a class="center btn btn-success" href="/quizzes/<%= quiz.id %>">Show
-        </a></p>
-        <% if (currentUser  && currentUser.instructor === false) {  %>
+        <h4 class="card-header bg-dark text-white card-title center"><%= quiz.name %></h4>
+          <p class="card-text margin-small">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="center"><a class="center btn btn-success" href="/quizzes/<%= quiz.id %>">Show</a></p>
+          <% if (currentUser  && currentUser.instructor === false) {  %>
       </div>
     </div>  
-    <% } %>
-        <% if(currentUser && currentUser.instructor) { %>
-          <form action="/quizzes/<%= quiz.id %>?_method=DELETE" method="POST" class="center delete">
-            <input class="center-inline btn btn-danger" type="submit" value="Delete">
-           </form>
+  <% } %>
+  <% if(currentUser && currentUser.instructor) { %>
+    <form action="/quizzes/<%= quiz.id %>?_method=DELETE" method="POST" class="center delete">
+      <input class="center-inline btn btn-danger" type="submit" value="Delete">
+    </form>
           </div>
         </div>
         <% } %>
         <% }) %>    
       </div>
 
-     
+<!-------->
+
+  <% if(currentUser && currentUser.instructor) { %>
+    <h1 class="center">
+      <a class="center btn btn-success" href="/quizzes/new">Create a Quiz</a>
+    </h1>
+  <% } %>
+
+<!-- vv This is top multiple text selector form -->
   
-      <!-------->
+  <div class="margin">
 
+      <form class="list-quizzes" action="/quizzes/getquiz" method="POST">
+        <div class="form-group">
+            <label for="exampleFormControlSelect2">Show a Quiz</label>
+            <select name="quizName" class="form-control" id="exampleFormControlSelect2">
+              <% quizzes.forEach((quiz) => { %>
+                  <option value="<%= quiz._id %>">
+                    <%= quiz.name %>
+                  </option>
+                  <% }) %>
+            </select>
+      </div>
+        <div>
+          <input class="btn btn-success" type="submit">
+        </div>
+      </form>
+      </div>
+      <br>
 
-            <% if(currentUser && currentUser.instructor) { %>
-              <h1 class="center">
-                <a class="center btn btn-success" href="/quizzes/new">Create a Quiz</a>
-              </h1>
-              <% } %>
+      <!--================================================================================-->
     <br>
     <br>
     <br>
