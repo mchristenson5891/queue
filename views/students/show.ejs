@@ -1,1 +1,17 @@
+<<<<<<< HEAD
 <h1><%= student %></h1>
+=======
+<%- include('../_partials/head') %>
+<%- include('../_partials/navInstructor') %>
+
+<main class="container">
+  <h2 class="text-center"><span class="student-header"><%= student.githubUserName %></span></h2>
+  <% student.quizzes.forEach((quizId, idx) => { %>
+     <a href="/quizzes/<%= quizId %>">quiz <%= idx + 1 %></a>
+  <% }) %>
+
+</main>
+
+
+
+>>>>>>> ed24c51e12e6c4e47a24ca35d1380a49c2b23eab

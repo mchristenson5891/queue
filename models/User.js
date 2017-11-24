@@ -10,7 +10,7 @@ var answerSchema = new mongoose.Schema({
 
 var userSchema = new mongoose.Schema({
   fullName: String,
-  cohort: String,
+  cohort: {type: String, default: '53'},
   instructor: {type: Boolean, default: false},
   githubUserName: String,
   answers: [answerSchema],

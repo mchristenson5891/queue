@@ -18,6 +18,8 @@ require('./config/passport');
 var index = require('./routes/index');
 var students = require('./routes/students');
 var quizzes = require('./routes/quizzes');
+var instructors = require('./routes/instructors');
+var api = require('./routes/api');
 // var instructors = require('./routes/instructors');
 // var questions = require('./routes/questions');
 
@@ -50,7 +52,10 @@ app.use(function(req, res, next) {
 
 app.use('/', index);
 app.use('/students', students);
+app.use('/instructors', instructors);
 app.use('/quizzes', quizzes);
+app.use('/api/quizzes', api);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,12 +1,18 @@
 <%- include('../_partials/head') %>
 <%- include('../_partials/navInstructor') %>
-<h1>Students</h1>
 
-<% students.forEach((student) => { %>
-<% if (!student.instructor) { %> 
-    <a href="/students/<%= student._id %>"><%= student.githubUserName %></a>
-    <% } %>
-<% }) %>
+<main class="container text-center">
+  <div class="students">
+    <h1><span class="student-header">Students</span></h1>
+    <ul class="all-students">
+    <% students.forEach((student) => { %>
+      <% if (!student.instructor) { %> 
+        <li><a href="/students/<%= student._id %>"><%= student.githubUserName %></a></li>
+      <% } %>
+    <% }) %>
+    </ul>
+  </div>
+</main>
 
 
 <%- include('../_partials/footer') %>

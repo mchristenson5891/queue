@@ -11,7 +11,6 @@ function index(req, res) {
       res.render('./quizzes/index', {quizzes: user.quizzes });
     })
   }
-
 }
 
 function show(req, res) {
