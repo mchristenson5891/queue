@@ -12,13 +12,13 @@
 <form action="/quizzes/answers" method="POST">
   <% question.options.forEach((option, idx) => { %>
     <div class="options-left-align" >
-  <label>
-    <%= alphas[idx] %>&nbsp;
-    <input type="radio" name="selectedOption" value= <%= option.id %>> &nbsp;
-    <%= option.option %>
-  </label><br>
+    <label>
+      <%= alphas[idx] %>&nbsp;
+      <input type="radio" name="selectedOption" value= <%= option.id %>> &nbsp;
+      <%= option.option %>
+    </label><br>
   <% }) %>
-</div>
+    </div>
   <br>
   <br>
   <input class="btn btn-success" type="submit" value="Submit Answer">
