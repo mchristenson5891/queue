@@ -1,6 +1,6 @@
 <%- include('../_partials/head') %>
 <%- include('../_partials/navInstructor') %>
-<div class="container">
+<main class="container">
     <h1><%= quiz.name %> Quiz</h1>
         <form action="/quizzes/<%= quiz.id %>/questions" method="POST">
             <h3>Enter Question</h3>
@@ -8,6 +8,6 @@
             
             <input type='submit' value='Create Question'>
         </form><br>
-    <button><a href="">Back</a></button>
-</div>
+    <button><a href="/quizzes/<%= quiz.id %>">Back</a></button>
+</main>
 <%- include('../_partials/footer') %>

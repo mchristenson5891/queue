@@ -201,3 +201,22 @@ a.nav-link:hover {
 
 /* quiz show page */
 
+h1.quizShow {
+  display: inline-block;
+ 
+}
+
+.make-question {
+  padding-top: 20px;
+  text-align: center;
+}
+
+li {
+  font-size: 1.2em;
+}
+
+h2 {
+  display: inline-block;
+  padding-top: 20px;
+  padding-left: 20px;
+}
