@@ -1,26 +1,30 @@
 <%- include('../_partials/head') %>
 <%- include('../_partials/navInstructor') %>
-<h1><%= question.question %></h1>
+<main class="container">
+    <h1><%= question.question %></h1>
+    
+      <form action="/quizzes/questions/<%= question.id %>/options" method="POST">
+        <h3>Answer</h3>
+        <textarea placeholder='Answer' name='option' required pattern="\w{4,}"></textarea>
+        
+        <input type='submit' value='Add Answer'>
+      </form>
 
-<form action="/quizzes/questions/<%= question.id %>/options" method="POST">
-  <h3>Answer</h3>
-  <textarea placeholder='Answer' name='option' required pattern="\w{4,}"></textarea>
-  
-  <input type='submit' value='Add Answer'>
-</form>
-
-<% question.options.forEach((option) => { %>
-  <%= option.option %>
-  <% if (option._id.equals(question.correctAnswer)) { %>
-    <span> CORRECT </span>
-  <% } else {%>
-  <form action="/quizzes/options/<%= option._id %>/set?_method=PUT" method="POST">
-    <input type="submit" value="Set as correct">
-  </form>
-  <% } %>
-  <form action="/quizzes/options/<%= option.id %>\?_method=DELETE" method="POST">
-    <input type="submit" value="Delete Answer">
-  </form>
-<% }) %>
+    <% question.options.forEach((option) => { %>
+      <%= option.option %>
+      <% if (option._id.equals(question.correctAnswer)) { %>
+        <span> CORRECT </span>
+      <% } else {%>
+      <form action="/quizzes/options/<%= option._id %>/set?_method=PUT" method="POST">
+        <input class="btt btn-success btn-xs" type="submit" value="Set as correct">
+      </form><br>
+      <% } %>
+      <form action="/quizzes/options/<%= option.id %>\?_method=DELETE" method="POST">
+        <input class="btn btn-danger btn-xs" type="submit" value="Delete Answer">
+      </form>
+    <% }) %></br>
+    <button><a href="/quizzes/questions/<%= question.id %>">Back</button>
+      
+    </main>
 <%- include('../_partials/footer') %>
 

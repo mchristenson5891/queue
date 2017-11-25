@@ -1,0 +1,14 @@
+<!-- STUDENT DASHBOARD -->
+
+
+<!-- Uncompleted Quizzes -->
+<h1>Uncompleted Quizzes</h1>
+
+<% quizzes.forEach((quiz) => { %>
+  <a href="/quizzes/<%= quiz.id %>"><%= quiz.name %></a>
+ 
+<% }) %>
+<!-- Completed Quizzes -->
+
+
+
