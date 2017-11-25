@@ -1,30 +1,38 @@
 <%- include('../_partials/head') %>
 <%- include('../_partials/navInstructor') %>
-
-<h1 class="center bold"> <%= quiz.name %></h1>
-<button class="edit">Edit Quiz Name</button>
-<br>
-  <div class="row">
-   <button class="btn btn-e"><a href='/quizzes/<%= quiz.id %>/questions/new'>Make a Question</a></button>
+<main class="container">
+    <button class="btn btn-light"><a href="/quizzes">Back</a></button>
+    
+  <div class="make-question">    
+    <h1 class="quizShow"> <%= quiz.name %></h1>&nbsp;&nbsp;<button class="edit btn btn-warning btn-sm">Change Quiz Name</button><br>
+    <form action="/instructors/quizzes/<%= quiz.id %>/cohort/53" method="POST">
+      <input type="text" value="Enter Cohort" name="cohort">
+      <input type="submit" value="Assign to Cohort">
+    </form><br>
+    <button class="btn btn-lg"><a href='/quizzes/<%= quiz.id %>/questions/new'>Make a Question</a></button>
   </div>
-  <form action="/instructors/quizzes/<%= quiz.id %>/cohort/53" method="POST">
-    <input type="submit" value="Assign to Cohort">
-  </form>
-  <% if (!currentUser.instructor) { %> 
-    <a  class="cl-effect-21" href='/quizzes/questions/<%= quiz.questions[0].id %>'><button>start quiz</button></a>
-  <% } %>
-<ol>
+  <br>
+
+    <% if (!currentUser.instructor) { %> 
+      <a  class="cl-effect-21" href='/quizzes/questions/<%= quiz.questions[0].id %>'><button>start quiz</button></a>
+    <% } %>
+  <h2>Questions</h2>
+  <ol>
     <% quiz.questions.forEach((question) => { %>
     <% if(currentUser && currentUser.instructor) { %>
       <li>&nbsp&nbsp<a href='/quizzes/questions/<%= question.id %>'><%= question.question %></a></li>
       <% } else { %>
             <li>&nbsp&nbsp<%= question.question %></li>
             <% } %>
-             <% if(currentUser && currentUser.instructor) { %>
-          <form action="/quizzes/<%= quiz.id %>?_method=DELETE" method="POST">
-            <input type="submit" value="Delete">
-          </form>
+            <% if(currentUser && currentUser.instructor) { %>
+
+            <form action="/quizzes/<%= quiz.id %>?_method=DELETE" method="POST">
+            <input class="btn btn-danger btn-sm" type="submit" value="Delete">
+            </form>
+          
         <% } %>
   <% }) %>
-</ol>
+  </ol>
+</div>
+</main>
 <%- include('../_partials/footer') %>
