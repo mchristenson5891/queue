@@ -49,6 +49,12 @@ function results(req, res) {
   });
 }
 
+function editQuiz(req, res) { 
+  Quiz.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, quiz) => {
+    res.render(`quizzes/show`, {quiz});
+  });
+}
+
 module.exports = {
   index,
   show,
@@ -56,5 +62,6 @@ module.exports = {
   create,
   deleteQuiz,
   getQuiz,
-  results
+  results,
+  editQuiz
 }

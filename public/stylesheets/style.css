@@ -223,24 +223,28 @@ a.nav-link:hover {
 
 h1.quizShow {
   display: inline-block;
- 
+  padding-top: 50px;
 }
 
 .make-question {
   padding-top: 20px;
   text-align: center;
+  list-style-position: inside;
 }
 
-li {
-  font-size: 1.2em;
+.list-questions {
+  border: 1px solid black;
+  background: white;
+  margin: 20px;
 }
 
-h2 {
+
+.questions-header {
   display: inline-block;
-  padding-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   padding-left: 20px;
 }
-
 
 #wrapper-question-show {
   margin: 20px;
@@ -249,3 +253,13 @@ h2 {
   font-size: 20px;
 
 }
+
+.edit-quiz-name {
+  display: none;
+}
+.head-left {
+  text-align: left;
+  display: inline-block;
+}
+
+
