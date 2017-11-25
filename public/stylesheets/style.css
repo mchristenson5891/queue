@@ -219,8 +219,6 @@ a.nav-link:hover {
 }
 
 
-
-
 h1.quizShow {
   display: inline-block;
   padding-top: 50px;
@@ -263,3 +261,7 @@ h1.quizShow {
 }
 
 
+.options-left-align {
+  text-align: left;
+  display: inline-block;
+}
