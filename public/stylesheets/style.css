@@ -218,3 +218,10 @@ a.nav-link:hover {
   margin-top: 0!important;
 }
 
+#wrapper-question-show {
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+  font-size: 20px;
+
+}
