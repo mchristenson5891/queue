@@ -5,6 +5,7 @@ var instructors = require('./../controllers/instructorsController');
 
 router.get('/', instructors.index);
 router.post('/quizzes/:id/cohort/:cohortNum', isInstructor, instructors.assignQuiz);
+router.get('/:id/quiz/:quizId/results', isInstructor, instructors.getResults)
 
 module.exports = router;
 

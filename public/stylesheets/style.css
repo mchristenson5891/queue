@@ -147,6 +147,10 @@ a.nav-link:hover {
   border-bottom: 1px solid gray;
 }
 
+.student-quizzes {
+  margin-top: 30px;
+}
+
 .all-students li {
   display: inline-block;
 }
@@ -199,7 +203,24 @@ a.nav-link:hover {
 	transform: translateX(0px);
 }
 
+<<<<<<< HEAD
 /* quiz show page */
+=======
+.quiz-card {
+  margin: 30px;
+  border: 1px solid gray;
+  background-color: rgba(145, 143, 143, 0.3)
+}
+
+
+.card-text {
+  font-size: 14px;
+}
+
+.delete-form {
+  margin-top: 0!important;
+}
+>>>>>>> fe79ec3e01b5b88bff1c13799aa392916555b991
 
 h1.quizShow {
   display: inline-block;
