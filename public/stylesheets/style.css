@@ -206,7 +206,7 @@ a.nav-link:hover {
 .quiz-card {
   margin: 30px;
   border: 1px solid gray;
-  background-color: rgba(145, 143, 143, 0.3)
+  background-color: white;
 }
 
 
@@ -217,4 +217,25 @@ a.nav-link:hover {
 .delete-form {
   margin-top: 0!important;
 }
+
+h1.quizShow {
+  display: inline-block;
+ 
+}
+
+.make-question {
+  padding-top: 20px;
+  text-align: center;
+}
+
+li {
+  font-size: 1.2em;
+}
+
+h2 {
+  display: inline-block;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
 
