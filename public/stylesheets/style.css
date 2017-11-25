@@ -218,6 +218,9 @@ a.nav-link:hover {
   margin-top: 0!important;
 }
 
+
+
+
 h1.quizShow {
   display: inline-block;
  
@@ -239,3 +242,10 @@ h2 {
 }
 
 
+#wrapper-question-show {
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+  font-size: 20px;
+
+}

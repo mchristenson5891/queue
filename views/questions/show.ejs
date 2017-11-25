@@ -1,12 +1,13 @@
 <!-- <h1><%= question.options %> </h1> -->
 <%- include('../_partials/head') %>
 <%- include('../_partials/navInstructor') %>
+<div id="wrapper-question-show">
+<h1>Question:</h1> 
+<br>
+<h2><span><%= question.question %></span></h2>
+<br>
 
-<h2>Question: <span><%= question.question %></span></h2>
-
-<a href='/quizzes/questions/<%= question.id %>/options/new'>Create an Answer</a>
-
-<h2>Answers</h2>
+<h4>Answers</h4>
 <% var alphas = ['A', 'B', 'C', 'D', 'E', 'F', 'G']%>
 <form action="/quizzes/answers" method="POST">
   <% question.options.forEach((option, idx) => { %>
@@ -16,8 +17,16 @@
     <%= option.option %>
   </label><br>
   <% }) %>
-  <input type="submit" value="Submit Answer">
+  <br>
+  <br>
+  <input class="btn btn-success" type="submit" value="Submit Answer">
 </form>
-
-<%- include('../_partials/footer') %>
-
+<br>
+<br>
+<% if (currentUser.instructor) { %>
+<form action="/quizzes/questions/<%= question.id %>/options/new">
+  <input type="submit" class="btn btn-primary" value="Create an Answer"> 
+</form>
+<% } %>
+<%- include('../_partials/footer') %> 
+</div>
