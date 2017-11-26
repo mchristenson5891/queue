@@ -37,7 +37,7 @@
           <li>&nbsp&nbsp<%= question.question %></li>
         <% } %>
         <% if(currentUser && currentUser.instructor) { %>
-          <form action="/quizzes/<%= quiz.id %>?_method=DELETE" method="POST">
+          <form action="/quizzes/questions/<%= question.id%>?_method=DELETE" method="POST">
             <input class="btn btn-danger btn-sm " type="submit" value="Delete">
           </form>
         <% } %>
