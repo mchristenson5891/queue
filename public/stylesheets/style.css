@@ -219,8 +219,6 @@ a.nav-link:hover {
 }
 
 
-
-
 h1.quizShow {
   display: inline-block;
   padding-top: 50px;
@@ -251,7 +249,6 @@ h1.quizShow {
   padding: 20px;
   text-align: center;
   font-size: 20px;
-
 }
 
 .edit-quiz-name {
@@ -262,4 +259,42 @@ h1.quizShow {
   display: inline-block;
 }
 
+.options-left-align {
+  text-align: left;
+  display: inline-block;
+}
 
+.options-center {
+  text-align: left;
+}
+.center-question-new {
+  text-align: center;
+}
+.enter-question-header {
+  margin-top: 20px;
+}
+.question-txt-area {
+  width: 75%;
+}
+
+.options-new-center {
+  text-align: center;
+}
+
+.correct {
+  color: green;
+  font-size: 1.5em;
+}
+.answer-txt-area {
+  width: 100%;
+}
+
+.display-option {
+  font-size: 2em;
+}
+.option-display-div {
+  margin: 20px 20px 20px 0;
+  padding: 15px;
+  background: white;
+  border-radius: 5px;
+}

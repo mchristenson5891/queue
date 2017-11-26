@@ -11,12 +11,14 @@
 <% var alphas = ['A', 'B', 'C', 'D', 'E', 'F', 'G']%>
 <form action="/quizzes/answers" method="POST">
   <% question.options.forEach((option, idx) => { %>
-  <label>
-    <%= alphas[idx] %>&nbsp;
-    <input type="radio" name="selectedOption" value= <%= option.id %>> &nbsp;
-    <%= option.option %>
-  </label><br>
+    <div class="options-left-align" >
+    <label>
+      <%= alphas[idx] %>&nbsp;
+      <input type="radio" name="selectedOption" value= <%= option.id %>> &nbsp;
+      <%= option.option %>
+    </label><br>
   <% }) %>
+    </div>
   <br>
   <br>
   <input class="btn btn-success" type="submit" value="Submit Answer">
@@ -28,5 +30,5 @@
   <input type="submit" class="btn btn-primary" value="Create an Answer"> 
 </form>
 <% } %>
-<%- include('../_partials/footer') %> 
 </div>
+<%- include('../_partials/footer') %> 
