@@ -12,7 +12,7 @@
   <div class="question">
     <p><span>Question&nbsp;<%= idx + 1 %>) </span> <%= question.question %></p>
     <% var answer = user.answers.find(answer => answer.questionId.equals(question._id)) %>
-    <span class="result-message"><%= answer.result ? 'Correct' : 'Incorrect' %></span>
+    <span class="result-message"><%= answer.result ? 'Correct' : 'Incorrect' %><img src="https://i.imgur.com/kVrWVm4.png"/><img src="https://i.imgur.com/i043nj7.png"/></span>
     <ul>
       <% question.options.forEach((option, idx) => { %> 
         <li>
