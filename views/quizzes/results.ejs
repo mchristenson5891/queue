@@ -12,7 +12,14 @@
   <div class="question">
     <p><span>Question&nbsp;<%= idx + 1 %>) </span> <%= question.question %></p>
     <% var answer = user.answers.find(answer => answer.questionId.equals(question._id)) %>
-    <span class="result-message"><%= answer.result ? 'Correct' : 'Incorrect' %><img src="https://i.imgur.com/kVrWVm4.png"/><img src="https://i.imgur.com/i043nj7.png"/></span>
+    <span class="result-message">
+      <%= answer.result ? 'Correct' : 'Incorrect' %>
+      <% if (answer.result) { %>
+        <img src="https://i.imgur.com/i043nj7.png">
+        <% } else { %>
+          <img src="https://i.imgur.com/kVrWVm4.png">
+          <% } %>
+        </span>
     <ul>
       <% question.options.forEach((option, idx) => { %> 
         <li>
@@ -26,7 +33,7 @@
 
 <% }) %>
 
-<h1>You scored <%= (correctAnswers /  quiz.questions.length ) * 100 %>% </h1> 
+<h1>You scored <%= ((correctAnswers /  quiz.questions.length ) * 100).toFixed(2) %>% </h1> 
 
 </div>
 
