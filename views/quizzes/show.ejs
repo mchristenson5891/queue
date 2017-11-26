@@ -2,6 +2,7 @@
 <%- include('../_partials/navInstructor') %>
 <main class="container">
     <button class="btn btn-light"><a href="/quizzes">Back</a></button><br>
+    <div class="quiz-show-header">
     <div class="make-question">
       <div class="head-left">
         <h1 class="quizShow"> <%= quiz.name %></h1>&nbsp;&nbsp;<button id="editForm" class="btn btn-sm btn-warning" onclick="editQuizName()">Change Quiz Name</button><br>
@@ -28,7 +29,7 @@
   <div class="make-question list-questions">
     <div class="head-left">
       <h2 class="questions-header">Questions</h2>
-      <div class="make-question">
+      <div class="make-question ">
       <ol>
         <% quiz.questions.forEach((question) => { %>
         <% if(currentUser && currentUser.instructor) { %>

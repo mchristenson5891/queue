@@ -226,7 +226,7 @@ h1.quizShow {
 
 .make-question {
   padding-top: 20px;
-  text-align: center;
+  /* text-align: center; */
   list-style-position: inside;
 }
 
@@ -297,4 +297,8 @@ h1.quizShow {
   padding: 15px;
   background: white;
   border-radius: 5px;
+}
+
+.quiz-show-header {
+ margin-left: 20px;
 }
