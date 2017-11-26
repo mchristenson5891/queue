@@ -1,6 +1,9 @@
 <%- include('./_partials/head') %>
-    <%- include('./_partials/navInstructor') %>
-  
+<% if(currentUser && currentUser.instructor) { %>
+  <%- include('./_partials/navInstructor') %>
+<% } else { %>
+  <%- include('./_partials/navStud') %>
+<% } %> 
       <section>
         <div class="container">
           <div class="row align-items-center">
