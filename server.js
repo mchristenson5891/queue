@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
 var methodOverride = require('method-override');
+
 // load the env vars
 require('dotenv').config();
 
@@ -20,8 +21,7 @@ var students = require('./routes/students');
 var quizzes = require('./routes/quizzes');
 var instructors = require('./routes/instructors');
 var api = require('./routes/api');
-// var instructors = require('./routes/instructors');
-// var questions = require('./routes/questions');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -49,6 +49,7 @@ app.use(function(req, res, next) {
   res.locals.currentUser = req.user;
   next();
 });
+
 
 app.use('/', index);
 app.use('/students', students);

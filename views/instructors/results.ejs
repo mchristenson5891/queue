@@ -1,2 +1,19 @@
-<%= student %>
-<%= quizId %> 
+<% student.quizzes.forEach((quiz) => { %>
+  <% if (quiz._id == quizId) {%>
+    <% quiz.questions.forEach((question) => { %>
+      <% student.answers.forEach((answer) => { %>
+        <% if (question.id == answer.questionId) { %>
+          <h1><%= question.question %></h1>
+          <h2><%= answer.result %></h2>
+          <% question.options.forEach((option) => { %>
+            <% if (question.correctAnswer == option.id) { %>
+              <p class="right"><%= option.option %></p>
+            <% } else {%>
+              <p class="option"><%= option.option %></p>
+            <% } %>
+          <% }) %>
+        <% } %>
+      <% }) %>
+    <% }) %>
+  <% } %>  
+<% }) %>
