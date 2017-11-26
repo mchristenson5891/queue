@@ -277,3 +277,15 @@ h1.quizShow {
 .question-txt-area {
   width: 75%;
 }
+
+.options-new-center {
+  text-align: center;
+}
+
+.correct {
+  color: green;
+  font-size: 2em;
+}
+.answer-txt-area {
+  width:75%;
+}
