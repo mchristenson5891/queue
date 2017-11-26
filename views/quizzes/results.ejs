@@ -1,15 +1,16 @@
 <%- include('../_partials/navInstructor') %>
-<main class="contianer">
+<main class="container">
 
-<h1>Quiz Results</h1>
 
-<h2><%= quiz.name %></h2>
+<h1 class="text-center">Quiz Results: <%= quiz.name %></h1>
+
+<div class="col-sm-12 quiz-card text-center">
 
 <% var alphas = ['A', 'B', 'C', 'D', 'E', 'F'] %>
     <% var correctAnswers = 0 %>
 <% quiz.questions.forEach((question, idx) => { %>
   <div class="question">
-    <p><span><%= idx + 1 %>) </span> <%= question.question %></p>
+    <p><span>Question&nbsp;<%= idx + 1 %>) </span> <%= question.question %></p>
     <% var answer = user.answers.find(answer => answer.questionId.equals(question._id)) %>
     <span class="result-message"><%= answer.result ? 'Correct' : 'Incorrect' %></span>
     <ul>
@@ -26,5 +27,7 @@
 <% }) %>
 
 <h1>You scored <%= (correctAnswers /  quiz.questions.length ) * 100 %>% </h1> 
+
+</div>
 
 
