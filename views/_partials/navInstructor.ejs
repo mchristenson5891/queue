@@ -4,17 +4,21 @@
     <nav class="navbar navbar-expand-md navbar-light bg-dark">
       <a class="navbar-brand white" href="/" >Queue</a>
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link white" href="/quizzes">Quizzes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link white" href="/students">Students</a>
-        </li>
+        <% if (currentUser) { %> 
+          <li class="nav-item">
+              <a class="nav-link white" href="/quizzes">Quizzes</a>
+            </li>
+        <% } %>
+        <% if (currentUser && currentUser.instructor) { %>
+          <li class="nav-item">
+            <a class="nav-link white" href="/students">Students</a>
+          </li>
+        <% } %>
       </ul>
       <ul class="navbar-nav ml-auto">       
         <% if (currentUser) { %>
           <li class="nav-item">
-            <span class="white nav-link"><%= currentUser.githubUserName %></span>
+            <span class="white nav-link">Welcome, <%= currentUser.githubUserName %>!</span>
           </li>
           <li class="nav-item">
             <a class= "nav-link white" href="/logout">Log Out</a>

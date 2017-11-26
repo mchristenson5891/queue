@@ -1,26 +1,33 @@
 <%- include('../_partials/head') %>
 <%- include('../_partials/navInstructor') %>
-<h1><%= question.question %></h1>
-
-<form action="/quizzes/questions/<%= question.id %>/options" method="POST">
-  <h3>Answer</h3>
-  <textarea placeholder='Answer' name='option' required pattern="\w{4,}"></textarea>
-  
-  <input type='submit' value='Add Answer'>
-</form>
-
-<% question.options.forEach((option) => { %>
-  <%= option.option %>
-  <% if (option._id.equals(question.correctAnswer)) { %>
-    <span> CORRECT </span>
-  <% } else {%>
-  <form action="/quizzes/options/<%= option._id %>/set?_method=PUT" method="POST">
-    <input type="submit" value="Set as correct">
-  </form>
-  <% } %>
-  <form action="/quizzes/options/<%= option.id %>\?_method=DELETE" method="POST">
-    <input type="submit" value="Delete Answer">
-  </form>
-<% }) %>
+<main class="container">
+    <button><a href="/quizzes/questions/<%= question.id %>">Back</a></button>
+      
+    <div class="options-new-center">
+      <div class="options-left-align">
+        <h1><%= question.question %></h1>
+          <form action="/quizzes/questions/<%= question.id %>/options" method="POST">
+            <h3>Enter Answer</h3>
+            <textarea class="answer-txt-area" placeholder='Answer' name='option' required pattern="\w{4,}"></textarea><br>
+            <input class="btn btn-success" type='submit' value='Add Answer'>
+          </form><br>
+        <% question.options.forEach((option) => { %>
+          <div class="option-display-div">
+          <span class="display-option"><%= option.option %></span>
+          <% if (option._id.equals(question.correctAnswer)) { %>
+            <span class="correct">CORRECT </span>
+          <% } else {%>
+          <form action="/quizzes/options/<%= option._id %>/set?_method=PUT" method="POST">
+            <input class="btt btn-warning btn-sm" type="submit" value="Set as correct">
+          </form><br>
+          <% } %>
+          <form action="/quizzes/options/<%= option.id %>\?_method=DELETE" method="POST">
+            <input class="btn btn-danger btn-sm" type="submit" value="Delete Answer">
+          </form>
+        </div>
+        <% }) %></br>
+        </div>
+      </div>
+    </main>
 <%- include('../_partials/footer') %>
 

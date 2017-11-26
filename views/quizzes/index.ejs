@@ -4,12 +4,23 @@
   <h1 class="center bold">
     <span class="student-header">Quizzes</span>
   </h1>
+  <% if(currentUser && currentUser.instructor) { %>
+    <h1 class="center">
+      <a class="center btn btn-success" href="/quizzes/new">Create a Quiz</a>
+    </h1>
+    <% } %>
 <div class="row">
   <% quizzes.forEach((quiz) => { %>
+    <% var questionNum = 0 %>
     <div class="col-sm-3 quiz-card text-center">
       <div class="card-block">
         <h4 class="card-title center"><span class="student-header"><%= quiz.name %></span></h4>
-          <p class="card-text margin-small">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <% quiz.questions.forEach((question) => { %>
+            <% questionNum++; %>
+        <% }) %>
+          <p class="card-text margin-small">
+              <%= questionNum %> questions
+          </p>
             <div class="row text-center">
               <a href="/quizzes/<%= quiz.id %>" class="col col-lg-3"><button class="btn btn-success">Show</button></a>
               <% if (currentUser && currentUser.instructor) { %> 
@@ -21,10 +32,7 @@
         </div>
     </div>
   <% }) %>  
-
-            <% if(currentUser && currentUser.instructor) { %>
-              <h1 class="center">
-                <a class="center btn btn-success" href="/quizzes/new">Create a Quiz</a>
-              </h1>
-              <% } %>
-    </main>
+    <br>
+  </main>
+          
+    

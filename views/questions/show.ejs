@@ -2,22 +2,42 @@
 <%- include('../_partials/head') %>
 <%- include('../_partials/navInstructor') %>
 
-<h2>Question: <span><%= question.question %></span></h2>
 
-<a href='/quizzes/questions/<%= question.id %>/options/new'>Create an Answer</a>
+<main class="container">
+<div class="show-quiz">
+<div class="col-sm-12 quiz-card text-center">
+<div id="wrapper-question-show">
+<h1>Question:</h1> 
+<br>
+<h2><span><%= question.question %></span></h2>
+<br>
 
-<h2>Answers</h2>
+<h4>Answers</h4>
 <% var alphas = ['A', 'B', 'C', 'D', 'E', 'F', 'G']%>
+<br>
 <form action="/quizzes/answers" method="POST">
   <% question.options.forEach((option, idx) => { %>
-  <label>
-    <%= alphas[idx] %>&nbsp;
-    <input type="radio" name="selectedOption" value= <%= option.id %>> &nbsp;
-    <%= option.option %>
-  </label><br>
+    <div class="options-left-align" >
+    <label>
+      <%= alphas[idx] %>&nbsp;
+      <input type="radio" name="selectedOption" value= <%= option.id %>> &nbsp;
+      <%= option.option %>
+    </label><br>
   <% }) %>
-  <input type="submit" value="Submit Answer">
+    </div>
+  <br>
+  <br>
+  <input class="btn btn-success" type="submit" value="Submit Answer">
 </form>
-
-<%- include('../_partials/footer') %>
-
+<br>
+<br>
+<% if (currentUser.instructor) { %>
+<form action="/quizzes/questions/<%= question.id %>/options/new">
+  <input type="submit" class="btn btn-primary" value="Create an Answer"> 
+</form>
+<% } %>
+</div>
+</div>
+</main>
+</div>
+<%- include('../_partials/footer') %> 
