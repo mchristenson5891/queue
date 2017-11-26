@@ -12,17 +12,19 @@
             <input class="btn btn-success" type='submit' value='Add Answer'>
           </form><br>
         <% question.options.forEach((option) => { %>
-          <%= option.option %></h2>
+          <div class="option-display-div">
+          <span class="display-option"><%= option.option %></span>
           <% if (option._id.equals(question.correctAnswer)) { %>
             <span class="correct">CORRECT </span>
           <% } else {%>
           <form action="/quizzes/options/<%= option._id %>/set?_method=PUT" method="POST">
-            <input class="btt btn-success btn-sm" type="submit" value="Set as correct">
+            <input class="btt btn-warning btn-sm" type="submit" value="Set as correct">
           </form><br>
           <% } %>
           <form action="/quizzes/options/<%= option.id %>\?_method=DELETE" method="POST">
             <input class="btn btn-danger btn-sm" type="submit" value="Delete Answer">
           </form>
+        </div>
         <% }) %></br>
         </div>
       </div>
