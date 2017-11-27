@@ -15,8 +15,7 @@ function assignQuiz(req, res) {
         }
       }))
       res.redirect('/');
-    })
-      
+    }) 
   })
 }
 
