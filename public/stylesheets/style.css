@@ -310,3 +310,7 @@ h1.quizShow {
 .quiz-delete-button {
   margin-top: 15px;
 } 
+
+.start-quiz-button {
+  margin: 15px;
+}
