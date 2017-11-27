@@ -18,7 +18,7 @@
         <% student.answers.forEach((answer) => { %>
           <% if (question.id == answer.questionId) { %>
             <% answer.result ? correctAnswers++ : null %>
-            <h1><%= question.question %></h1>
+            <h3><%= question.question %></h3>
             <h2><%= answer.result %></h2>
             <% question.options.forEach((option) => { %>
               <% if (question.correctAnswer == option.id) { %>
