@@ -25,7 +25,7 @@
         <p class="card-text margin-small">
           <%= questionNum %> questions
         </p>
-          <div class="row quiz-index">
+          <div class="quiz-index">
             <a href="/quizzes/<%= quiz.id %>" class="col col-lg-3"><button class="btn btn-success">Show</button></a>
             <% if (currentUser && currentUser.instructor) { %> 
               <div class="quiz-delete-button"> 
