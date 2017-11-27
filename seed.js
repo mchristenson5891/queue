@@ -17,11 +17,11 @@ seed.then(() => {
         { githubUserName: 'mchristenson5891', instructor: false},
         { githubUserName: 'Bobby', instructor: false, quizzes:[ "5a15f87ad0c2e1f48901393d", "5a14ea1f54e047e25859d8e0", "5a15f89bd0c2e1f48901393f" ] },
         { githubUserName: 'Time', instructor: false},
-        { githubUserName: 'Dani', instructor: false, cohort: "45"},
-        { githubUserName: 'Billy', instructor: false, cohort: "45"},
-        { githubUserName: 'anessaa', instructor: true, cohort: "45"},
-        { githubUserName: 'prancy', instructor: false, cohort: "45", quizzes:["5a15f89bd0c2e1f48901393f"]},
-        { githubUserName: 'pfinazzo', instructor: true, cohort: "45", quizzes:["5a14ea1f54e047e25859d8e0"]}
+        { githubUserName: 'Dani', instructor: false},
+        { githubUserName: 'Billy', instructor: false},
+        { githubUserName: 'anessaa', instructor: true},
+        { githubUserName: 'prancy', instructor: false, quizzes:["5a15f89bd0c2e1f48901393f"]},
+        { githubUserName: 'pfinazzo', instructor: true, quizzes:["5a14ea1f54e047e25859d8e0"]}
     ])
 })
 
