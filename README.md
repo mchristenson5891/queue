@@ -20,8 +20,8 @@ This application was created with the intention of testing and tracking a studen
 
 
 <h1>Future Enhancements</h1>
-<p>We hope to continue this project to include some of the following:</p>
-<h3>Displaying Completed and Uncompleted Quizzes as a Student</h3>
-<h3>Viewing Class Average of a Quiz as an Instructor</h3>
-<h3>Integrating HackerNews Feed API</h3>
-<h3>Being able to search a student by their github username as an Instructor</h3>
+<h3>We hope to continue this project to include some of the following:</h3>
+<p>Displaying Completed and Uncompleted Quizzes as a Student.</p>
+<p>Viewing Class Average of a Quiz as an Instructor</p>
+<p>Integrating HackerNews Feed API</p>
+<p>Being able to search a student by their github username as an Instructor</p>
