@@ -19,12 +19,14 @@
           <% if (question.id == answer.questionId) { %>
             <% answer.result ? correctAnswers++ : null %>
             <h3><%= question.question %></h3>
-            <h2><%= answer.result %></h2>
+            <h2 class="<%= answer.result ?'correct-text' : 'wrong-text' %>"><%= answer.result ? "Correct" : "Wrong" %></h2>
             <% question.options.forEach((option) => { %>
               <% if (question.correctAnswer == option.id) { %>
-                <p class="right"><%= option.option %></p>
-              <% } else {%>
-                <p class="option"><%= option.option %></p>
+                <p class="correct"><%= option.option %></p>
+              <% } else if(answer.choice == option.id){%>
+                <p class="wrong"><%= option.option %></p>
+              <% } else { %>
+                <p><%= option.option %></p>
               <% } %>
             <% }) %>
           <% } %>
@@ -32,6 +34,5 @@
       <% }) %>
     <% } %>
   <% }) %>
-  <h2><%= quizTitle %></h2>
-  <h1><%= student.githubUserName %> scored <%= ((correctAnswers /  counter ) * 100).toFixed(2) %>% </h1> 
+  <h1><%= student.githubUserName %> scored <%= ((correctAnswers /  counter ) * 100).toFixed(2) %>% on <%= quizTitle %></h1> 
 </main>

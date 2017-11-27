@@ -279,6 +279,18 @@ h1.quizShow {
   border: green 2px solid;
 }
 
+.wrong {
+  border: red 2px solid;
+}
+
+.correct-text {
+  color:green;
+}
+
+.wrong-text {
+  color: red;
+}
+
 .edit-quiz-name {
   display: none;
 }
