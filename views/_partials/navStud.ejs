@@ -5,7 +5,9 @@
       <a class="navbar-brand white" href="/" >Queue</a>
       <ul class="navbar-nav">
         <li class="nav-item">
+          <% if (currentUser) { %> 
           <a class="nav-link white" href="/quizzes">Quizzes</a>
+          <% } %>
         </li>
       </ul>
       <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
