@@ -12,12 +12,21 @@ This application was created with the intention of testing and tracking a studen
 <h3><a href="https://docs.google.com/presentation/d/1cF1psjOpxttJiczCABx4AGHrfcMlMu42SRlz97juPFY/edit?usp=sharing">Pitch Deck</a></h3>
 <h3><a href="https://trello.com/b/hX1u32iY">Trello</a></h3>
 <h1>Queue's RESTful API</h1>
+<ul>
+  <li>Exposed our own API.</li>
+  <li>Access to WDI questions and answers</li>
+</ul>
 
-<h1>Unsolved Problems</h1>
-<p>While creating this application, we faced multiple hurdles. One of those hurdles (but was identified early-on), was implementing effective communication and identifying miscommunication early on and ensure everyone has a proper turn in expressing their concerns and ideas. </p>
-<p>The second biggest hurdle was not being able to identify what a big project developing "Queue" entailed. In the middle of the project we decided, as a group, that this would be more of a study guide and resource for the student to identify their understsanding of the material rather than an app where teachers can identify the overall classes' understanding of the concepts. Pivoting was the key to our success.</p>
-<p>The last challenge composed of identifying upcoming problems that arise while building the application. Thoroughly planning through an application such as pseudocoding and what functionality was needed could have made building the application easier</p>
-
+<h1>Conflicts</h1>
+  <ul>Github Challenges</ul>
+    <ul>
+      <li>Divying up the workload.</li> 
+      <li>Working on different files/Merge conflicts.</li>
+    </ul>
+  <ul>Time Constraints</ul>
+    <ul>
+      <li>Wish we had more time!</li>
+    </ul>
 
 <h1>Future Enhancements</h1>
 <h3>We hope to continue this project to include some of the following:</h3>
