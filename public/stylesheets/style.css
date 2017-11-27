@@ -231,3 +231,7 @@ a.nav-link:hover {
  margin-top: 40px;
  
 }
+
+#fix-align {
+  margin-right: -65px;
+}
