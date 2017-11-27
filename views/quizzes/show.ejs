@@ -1,7 +1,9 @@
 <%- include('../_partials/head') %>
 <%- include('../_partials/navInstructor') %>
 <main class="container">
-    <button class="btn btn-light"><a href="/quizzes">Back</a></button><br>
+  <div id="quizShow">
+      <button class="btn btn-light"><a href="/quizzes">Back</a></button><br><br>
+      <% if (currentUser && currentUser.instructor) { %>
     <div class="quiz-show-header">
     <div class="make-question">
       <div class="head-left">
@@ -36,6 +38,12 @@
     </div>
   </div>
   </div>
+  <br>
+  <% } %>
+  <% if (currentUser) { %> 
+    <form action='/quizzes/questions/<%= quiz.questions[0].id %>'>
+      <input class="btn btn-primary cl-effect-21" type="submit" value="Start Quiz"/>
+  </form>
   <% } %>
   <% if (currentUser && currentUser.instructor) { %> 
   <div class="make-question">
