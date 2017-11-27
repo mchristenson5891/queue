@@ -278,3 +278,10 @@ h1.quizShow {
 .correct {
   border: green 5px solid;
 }
+
+.edit-quiz-name {
+  display: none;
+}
+.assign-cohort-btn {
+  margin-right: 27px;
+}
