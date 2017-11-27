@@ -6,7 +6,7 @@
 
 <div class="col-sm-12 quiz-card text-center">
 
-<% var alphas = ['A', 'B', 'C', 'D', 'E', 'F'] %>
+<% var alphas = ['A.', 'B.', 'C.', 'D.', 'E.', 'F.'] %>
     <% var correctAnswers = 0 %>
 <% quiz.questions.forEach((question, idx) => { %>
   <div class="question">
@@ -23,8 +23,8 @@
     <ul>
       <% question.options.forEach((option, idx) => { %> 
         <li>
-          <span><%= alphas[idx] %></span> <%= option.option %> 
-          <%= (question.correctAnswer == option.id) ? 'Correct Answer' : null %>
+          <span class="<%= (question.correctAnswer == option.id) ? 'correct' : null %>"><%= alphas[idx] %></span> <span><%= option.option %> 
+          </span>
         </li>
       <% }) %>
     </ul>
