@@ -3,6 +3,7 @@
 <main class="container">
   <div id="quizShow">
       <button class="btn btn-light"><a href="/quizzes">Back</a></button><br><br>
+      <% if (currentUser && currentUser.instructor) { %>
     <div class="quiz-show-header">
     <div class="make-question">
       <div class="head-left">
@@ -28,6 +29,7 @@
   </div>
   </div>
   <br>
+  <% } %>
   <% if (currentUser) { %> 
     <form action='/quizzes/questions/<%= quiz.questions[0].id %>'>
       <input class="btn btn-primary cl-effect-21" type="submit" value="Start Quiz"/>
