@@ -3,14 +3,21 @@
   <%- include('../_partials/navInstructor') %>
 <% } else { %>
   <%- include('../_partials/navStud') %>
-<% } %> 
+<% } %>
 
-<main class="container">
+<% var correctAnswers = 0 %>
+<% var counter = 0 %>
+<% var quizTitle; %>
+
+<main class="container"> 
   <% student.quizzes.forEach((quiz) => { %>
     <% if (quiz._id == quizId) {%>
+      <% quizTitle = quiz.name %>
       <% quiz.questions.forEach((question) => { %>
+        <% counter++ %>
         <% student.answers.forEach((answer) => { %>
           <% if (question.id == answer.questionId) { %>
+            <% answer.result ? correctAnswers++ : null %>
             <h1><%= question.question %></h1>
             <h2><%= answer.result %></h2>
             <% question.options.forEach((option) => { %>
@@ -23,6 +30,8 @@
           <% } %>
         <% }) %>
       <% }) %>
-    <% } %>  
+    <% } %>
   <% }) %>
+  <h2><%= quizTitle %></h2>
+  <h1><%= student.githubUserName %> scored <%= ((correctAnswers /  counter ) * 100).toFixed(2) %>% </h1> 
 </main>
