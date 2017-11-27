@@ -5,9 +5,13 @@
     <span class="student-header">Quizzes</span>
   </h1>
   <% if(currentUser && currentUser.instructor) { %>
+    <br>
+    <a href="/"><button class="btn btn-success">Back to Home</button></a>
+    <br>
     <h1 class="center">
       <a class="center btn btn-success" href="/quizzes/new">Create a Quiz</a>
     </h1>
+
     <% } %>
 <div class="row">
   <% quizzes.forEach((quiz) => { %>
