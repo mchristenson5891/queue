@@ -259,3 +259,9 @@ h1.quizShow {
 #fix-align {
   margin-right: -65px;
 }
+
+#marginShowButton {
+  text-align: center;
+  margin: 20px;
+}
+
