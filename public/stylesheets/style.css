@@ -235,3 +235,9 @@ a.nav-link:hover {
 #fix-align {
   margin-right: -65px;
 }
+
+#marginShowButton {
+  text-align: center;
+  margin: 20px;
+}
+
