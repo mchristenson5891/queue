@@ -53,10 +53,14 @@ app.use(function(req, res, next) {
 
 app.use('/', index);
 app.use('/students', students);
-app.use('/instructors', instructors);
+app.use('/instructors', isInstructor, instructors);
 app.use('/quizzes', quizzes);
 app.use('/api/quizzes', api);
 
+function isInstructor(req, res, next) {
+  if(res.locals.currentUser.instructor) return next();
+  res.redirect('/quizzes');
+}
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
