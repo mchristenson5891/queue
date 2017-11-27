@@ -1,33 +1,43 @@
 <%- include('../_partials/head') %>
 <%- include('../_partials/navInstructor') %>
 <main class="container">
-    <button class="btn btn-light"><a href="/quizzes">Back</a></button><br>
+  <div id="quizShow">
+      <button class="btn btn-light"><a href="/quizzes">Back</a></button><br><br>
     <div class="quiz-show-header">
     <div class="make-question">
       <div class="head-left">
-        <h1 class="quizShow"> <%= quiz.name %></h1>&nbsp;&nbsp;<button id="editForm" class="btn btn-sm btn-warning" onclick="editQuizName()">Change Quiz Name</button><br>
+        <h1 class="quizShow"> <%= quiz.name %></h1>&nbsp;&nbsp;<br><button id="editForm" class="btn btn-sm btn-warning" onclick="editQuizName()">Change Quiz Name (double click)</button><br><br><br>
         <div class="edit-quiz-name">
           <form action="/quizzes/<%= quiz.id %>?_method=put" method="post">
           <input type="text" value="<%= quiz.name %>" name="name">
-          <input type="submit" value="submit">
+          <input class = "btn btn-sm btn-primary" type="submit" value="Submit">
         </form>
+        <br>
+      </div>
       </div>
         <form action="/instructors/quizzes/<%= quiz.id %>/cohort/53" method="POST">
           <input type="text" value="Enter Cohort" name="cohort">
-          <input class="btn btn-sm btn-success" type="submit" value="Assign to Cohort">
+          <input class="btn btn-sm btn-success" id="fix-align" type="submit" value="Assign to Cohort">
         </form><br>
       </div>
     </div>
   <div class="make-question">
-    <button class="btn btn-lg"><a href='/quizzes/<%= quiz.id %>/questions/new'>Make a Question</a></button>
+    <form action="/quizzes/<%= quiz.id %>/questions/new">
+    <input class="btn btn-primary" type="submit" value="Make a Question"/>
+</form>
   </div>
   </div>
   <br>
-  <% if (!currentUser.instructor) { %> 
-    <a  class="cl-effect-21" href='/quizzes/questions/<%= quiz.questions[0].id %>'><button>start quiz</button></a>
+  <% if (currentUser) { %> 
+    <form action='/quizzes/questions/<%= quiz.questions[0].id %>'>
+      <input class="btn btn-primary cl-effect-21" type="submit" value="Start Quiz"/>
+  </form>
   <% } %>
+  <br>
+  <br>
   <div class="make-question list-questions">
     <div class="head-left">
+      </div>
       <h2 class="questions-header">Questions</h2>
       <div class="make-question ">
       <ol>

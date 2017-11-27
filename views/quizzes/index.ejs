@@ -5,9 +5,13 @@
     <span class="student-header">Quizzes</span>
   </h1>
   <% if(currentUser && currentUser.instructor) { %>
+    <br>
+    <a href="/"><button class="btn btn-success">Back to Home</button></a>
+    <br>
     <h1 class="center">
       <a class="center btn btn-success" href="/quizzes/new">Create a Quiz</a>
     </h1>
+
     <% } %>
 <div class="row">
   <% quizzes.forEach((quiz) => { %>
@@ -21,6 +25,7 @@
           <p class="card-text margin-small">
               <%= questionNum %> questions
           </p>
+          <div id="marginShowButton">
             <div class="row text-center">
               <a href="/quizzes/<%= quiz.id %>" class="col col-lg-3"><button class="btn btn-success">Show</button></a>
               <% if (currentUser && currentUser.instructor) { %> 
@@ -28,6 +33,7 @@
                   <input class="center-inline btn btn-danger delete-form" type="submit" value="Delete">
                 </form>
               <% } %>
+            </div>
             </div>
         </div>
     </div>

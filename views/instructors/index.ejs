@@ -1,5 +1,9 @@
 <%- include('../_partials/head') %>
-<%- include('../_partials/navInstructor') %>
+<% if(currentUser && currentUser.instructor) { %>
+  <%- include('../_partials/navInstructor') %>
+<% } else { %>
+  <%- include('../_partials/navStud') %>
+<% } %> 
 
 <main class="container text-center">
   <div class="instructors-link">

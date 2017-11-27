@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
 var methodOverride = require('method-override');
+
 // load the env vars
 require('dotenv').config();
 
@@ -20,8 +21,7 @@ var students = require('./routes/students');
 var quizzes = require('./routes/quizzes');
 var instructors = require('./routes/instructors');
 var api = require('./routes/api');
-// var instructors = require('./routes/instructors');
-// var questions = require('./routes/questions');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -50,12 +50,17 @@ app.use(function(req, res, next) {
   next();
 });
 
+
 app.use('/', index);
 app.use('/students', students);
-app.use('/instructors', instructors);
+app.use('/instructors', isInstructor, instructors);
 app.use('/quizzes', quizzes);
 app.use('/api/quizzes', api);
 
+function isInstructor(req, res, next) {
+  if(res.locals.currentUser.instructor) return next();
+  res.redirect('/quizzes');
+}
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

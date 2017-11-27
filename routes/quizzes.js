@@ -16,10 +16,8 @@ router.get('/questions/:questionId/options/new', isInstructor, questions.newOpti
 router.post('/questions/:questionId/options', isInstructor, questions.createOption);
 router.delete('/options/:optionId', isInstructor, questions.deleteOption);
 router.put('/options/:id/set', isInstructor, questions.setAnswer);
-// router.post('/getquiz',quizzes.getQuiz);
 router.post('/answers', isLoggedIn, questions.createAnswer);
 router.get('/:id/results', isLoggedIn, quizzes.results);
-router.post('/quizzes/<%= quiz.id %>/cohort/:id', isInstructor)
 router.put('/:id', isInstructor, quizzes.editQuiz);
 
 module.exports = router;

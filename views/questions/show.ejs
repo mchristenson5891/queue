@@ -2,6 +2,10 @@
 <%- include('../_partials/head') %>
 <%- include('../_partials/navInstructor') %>
 
+
+<main class="container">
+<div class="show-quiz">
+<div class="col-sm-12 quiz-card text-center">
 <div id="wrapper-question-show">
 <h1>Question:</h1> 
 <br>
@@ -10,6 +14,7 @@
 
 <h4>Answers</h4>
 <% var alphas = ['A', 'B', 'C', 'D', 'E', 'F', 'G']%>
+<br>
 <form action="/quizzes/answers" method="POST">
   <% question.options.forEach((option, idx) => { %>
     <div class="options-left-align" >
@@ -31,6 +36,9 @@
   <input type="submit" class="btn btn-primary" value="Create an Answer"> 
 </form>
 <% } %>
+<br>
 </div>
-
+</div>
+</main>
+</div>
 <%- include('../_partials/footer') %> 
