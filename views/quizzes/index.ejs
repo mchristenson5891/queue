@@ -6,7 +6,6 @@
   </h1>
   <% if(currentUser && currentUser.instructor) { %>
     <br>
-    <a href="/"><button class="btn btn-success">Back to Home</button></a>
     <br>
     <h1 class="center">
       <a class="center btn btn-success" href="/quizzes/new">Create a Quiz</a>
@@ -29,8 +28,8 @@
             <a href="/quizzes/<%= quiz.id %>" class="col col-lg-3"><button class="btn btn-success">Show</button></a>
             <% if (currentUser && currentUser.instructor) { %> 
               <div class="quiz-delete-button"> 
-                <form action="/quizzes/<%= quiz.id %>?_method=DELETE" method="POST" class="delete col col-lg-3 delete-form">
-                  <input class="center-inline btn btn-danger delete-form" type="submit" value="Delete">
+                <form action="/quizzes/<%= quiz.id %>?_method=DELETE" method="POST">
+                  <input class="center-inline btn btn-danger" type="submit" value="Delete">
                 </form>
               </div>
             <% } %>

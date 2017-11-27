@@ -276,5 +276,12 @@ h1.quizShow {
 }
 
 .correct {
-  border: green 5px solid;
+  border: green 2px solid;
+}
+
+.edit-quiz-name {
+  display: none;
+}
+.assign-cohort-btn {
+  margin-right: 27px;
 }
