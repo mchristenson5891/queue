@@ -11,10 +11,11 @@ This application was created with the intention of testing and tracking a studen
 <h1>Planning</h1>
 <h3><a href="https://docs.google.com/presentation/d/1cF1psjOpxttJiczCABx4AGHrfcMlMu42SRlz97juPFY/edit?usp=sharing">Pitch Deck</a></h3>
 <h3><a href="https://trello.com/b/hX1u32iY">Trello</a></h3>
+
 <h1>Queue's RESTful API</h1>
 <ul>
-  <li>Exposed our own API.</li>
-  <li>Access to WDI questions and answers</li>
+  <li>Exposed our own API below where we can access to WDI Questions and answers</li>
+  <li><h3>https://wdi-queue.herokuapp.com/api/quizzes</li>
 </ul>
 
 <h1>Conflicts</h1>
@@ -34,3 +35,7 @@ This application was created with the intention of testing and tracking a studen
 <p>Viewing Class Average of a Quiz as an Instructor</p>
 <p>Integrating HackerNews Feed API</p>
 <p>Being able to search a student by their github username as an Instructor</p>
+
+<h1>Try Our App!</h1>
+
+<h3><a href="https://wdi-queue.herokuapp.com/quizzes">Queue App</a></h3>
