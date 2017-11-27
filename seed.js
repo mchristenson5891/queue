@@ -15,7 +15,9 @@ seed.then(() => {
         { fullName: 'Jim', instructor: true },
         { fullName: 'Jon', instructor: true },
         { githubUserName: 'anessaa', instructor: false, cohort: "53", quizzes:["5a15f89bd0c2e1f48901393f"]},
-       
+        
+        { githubUserName: 'anessaa', instructor: false, cohort: "53", quizzes:[" 5a1b62ffa133bb6645206250", "5a1b5c3488fefe5f8e715934"]}
+        
     ])
 })
 

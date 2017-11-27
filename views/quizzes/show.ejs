@@ -1,12 +1,12 @@
 <%- include('../_partials/head') %>
 <%- include('../_partials/navInstructor') %>
 <main class="container">
-  <div id="quizShow">
-      <button class="btn btn-light"><a href="/quizzes">Back</a></button><br><br>
+    <button class="btn btn-light"><a href="/quizzes">Back</a></button><br>
     <div class="quiz-show-header">
     <div class="make-question">
-<<<<<<< HEAD
-      <div class="head-left">              
+      <div class="head-left">
+          <div class="start-quiz-background">
+              
         <h1 class="quizShow"> <%= quiz.name %></h1>&nbsp;&nbsp;
         <% if (currentUser && currentUser.instructor) { %>
           <button id="editForm" class="btn btn-sm btn-warning" onclick="editQuizName()">Change Quiz Name</button><br>
@@ -28,29 +28,6 @@
           <button class="btn btn-lg"><a href='/quizzes/<%= quiz.id %>/questions/new'>Make a Question</a></button>
       </div>
     <% } %>
-=======
-      <div class="head-left">
-        <h1 class="quizShow"> <%= quiz.name %></h1>&nbsp;&nbsp;<br><button id="editForm" class="btn btn-sm btn-warning" onclick="editQuizName()">Change Quiz Name (double click)</button><br><br><br>
-        <div class="edit-quiz-name">
-          <form action="/quizzes/<%= quiz.id %>?_method=put" method="post">
-          <input type="text" value="<%= quiz.name %>" name="name">
-          <input class = "btn btn-sm btn-primary" type="submit" value="Submit">
-        </form>
-        <br>
-      </div>
-      </div>
-        <form action="/instructors/quizzes/<%= quiz.id %>/cohort/53" method="POST">
-          <input type="text" value="Enter Cohort" name="cohort">
-          <input class="btn btn-sm btn-success" id="fix-align" type="submit" value="Assign to Cohort">
-        </form><br>
-      </div>
-    </div>
-  <div class="make-question">
-    <form action="/quizzes/<%= quiz.id %>/questions/new">
-    <input class="btn btn-primary" type="submit" value="Make a Question"/>
-</form>
-  </div>
->>>>>>> 3793212ed56913aaa0a7724baa61a50cd6dc34ea
   </div>
   <br>
   <% if (!currentUser.instructor) { %> 
@@ -58,11 +35,11 @@
       <a  href='/quizzes/questions/<%= quiz.questions[0].id %>'><button class="btn btn-lg btn-success">start quiz</button></a>
     </div>
   </div>
+  </div>
   <% } %>
   <% if (currentUser && currentUser.instructor) { %> 
   <div class="make-question list-questions">
     <div class="head-left">
-      </div>
       <h2 class="questions-header">Questions</h2>
       <div class="make-question ">
       <ol>
