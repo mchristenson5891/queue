@@ -28,9 +28,13 @@
   </div>
   </div>
   <br>
-  <% if (!currentUser.instructor) { %> 
-    <a  class="cl-effect-21" href='/quizzes/questions/<%= quiz.questions[0].id %>'><button>start quiz</button></a>
+  <% if (currentUser) { %> 
+    <form action='/quizzes/questions/<%= quiz.questions[0].id %>'>
+      <input class="btn btn-primary cl-effect-21" type="submit" value="Start Quiz"/>
+  </form>
   <% } %>
+  <br>
+  <br>
   <div class="make-question list-questions">
     <div class="head-left">
       </div>
